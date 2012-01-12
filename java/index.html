@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<!--
+  Google HTML5 slide template
+
+  Authors: Luke Mahé (code)
+           Marcin Wichary (code and design)
+           
+           Dominic Mazzoni (browser compatibility)
+           Charles Chen (ChromeVox support)
+
+  URL: http://code.google.com/p/html5slides/
+-->
+
+<html>
+<head>
+<title>Presentation</title>
+<meta charset='utf-8'>
+<script src='../slides.js'></script>
+<style>
+.slides.template-inftel > article:not(.nobackground):not(.biglogo) {
+	background: url(images/inftel-logo.png) 560px 605px no-repeat;
+	background-color: white;
+}
+</style>
+</head>
+
+
+<body style='display: none'>
+<img style='display:none' src='images/inftel-logo.png'>
+<section class='slides layout-regular template-inftel'> 
+  
+  <!-- Your slides (<article>s) go here. Delete or comment out the
+           slides below. -->
+  
+  <article>
+    <h1 style='margin-top:105px'> Gestión de una central solar fotovoltáica y servicios de distribución electrica<br>
+      <span style="font-size:50%"> Metodologías de desarrollo. Lenguaje de modelado Unificado </span> </h1>
+    <p> Ignacio Baca Moreno-Torres<br>
+      Manuel Valls Vorndran<br>
+      Juan Manuel Rodríguez González <br>
+      Diciembre 2011 </p>
+  </article>
+  <article class='fill'>
+    <h3> Introducción y planteamiento del problema </h3>
+    <p> <img src='images/Mint_by_muShySoup.jpg'> </p>
+    <div class='source'>Por: Manuel Valls Vorndran</div>
+  </article>
+  <article class="current">
+    <h3>Energia Solar Fotovoltaica</h3>
+    <p>Actualmente se está produciendo una expansión en Sudamérica en la instalación de centrales solares</p>
+    <p>Los motivos por los que se están instalando centrales solares en el mundo es:</p>
+    <ul>
+      <li>Alta rentabilidad a la hora de invertir en este tipo de centrales</li>
+      <li>Es una energía limpia y renovable</li>
+      <li>Una de las soluciones para los problemas del cambio climático, ya que contribuimos eficazmente a la reducción de emisiones de CO2.</li>
+    </ul>
+  </article>
+  <article class="next">
+    <h3>Obtención de Energía Solar</h3>
+    <p>El sistema para obtener la energía solar es la siguiente:</p>
+    <img style="margin-top:5%" src="images/centralsolar.jpg" /> </article>
+  <article class="">
+    <h3>Parámetros a tener en cuenta</h3>
+    <img style="margin-top:2%;margin-left:30%;" src="images/angulos.jpg" />
+    <p><b>Acimut:</b> Acimut es el ángulo o longitud de arco sobre el horizonte celeste que forman el Norte y la proyección vertical del Sol sobre el horizonte del observador.</p>
+    <p><b>Elevación:</b> La elevación es el ángulo al que hay que elevar el módulo sobre el suelo</p>
+  </article>
+  <article class="far-next">
+    <h3>Contenido de la presentación</h3>
+    <p>El contenido de la presentación se ha dividido en los siguientes apartados</p>
+    <ol>
+      <li>Casos de uso</li>
+      <li>Diagrama de secuencia del control automatizado de un módulo fotovoltaico</li>
+      <li>Diagrama de secuencia de la compra/venta de energía a empresas</li>
+      <li>Conclusiones</li>
+    </ol>
+  </article>
+  <article class='fill'>
+    <h3> Diagrama de casos de uso<small></small> </h3>
+    <p> <img src='images/Orange_by_muShySoup.jpg'> </p>
+    <div class='source'>Por: Ignacio Baca Moreno-Torres</div>
+  </article>
+  <article>
+    <h3>Identifiación inicial</h3>
+    <p>En la primera iteración identificamos los actores</p>
+    <ul style='margin-top:8px'>
+      <li>Técnicos</li>
+      <li>Hardware</li>
+      <li>Suministrador/Consumidor</li>
+    </ul>
+    <br>
+    <div class='build'>
+      <div>
+        <p>En la segunda iteración</p>
+        <ul style='margin-top:8px'>
+          <li>división de actores por rol</li>
+          <li>casos de usos más especificos</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+  <article>
+    <h3>Identifiación de agentes</h3>
+    <p><br>
+      <img style='width: 650px' src='images/agentes.svg' class="centered"> </p>
+  </article>
+  <article>
+    <h3>Casos de uso - Hardware</h3>
+    <br>
+    <br>
+    <p> <img style='width: 700px' src='images/hardware-a.svg' class="centered"> </p>
+    <p class='build'> <img style='width:700px;margin-top:-42px' src='images/hardware-b.svg' class="centered"> </p>
+  </article>
+  <article>
+    <h3>Casos de uso - Técnicos</h3>
+    <p style='margin-top:5px'> <img style='width: 650px' src='images/tecnicos-a.svg' class="centered"> </p>
+    <p class='build'> <img style='width:650px;margin-top:-57px' src='images/tecnicos-b.svg' class="centered"> </p>
+  </article>
+  <article>
+    <h3>Casos de uso - Suministro y Consumo Externo</h3>
+    <br>
+    <p> <img style='width: 650px' src='images/empresas-a.svg' class="centered"> </p>
+    <p class='build'> <img style='width:650px;margin-top:-48px' src='images/empresas-b.svg' class="centered"> </p>
+  </article>
+  <article class='nobackground'>
+    <h3>Diagrama final de casos de uso</h3>
+    <p style='margin-top:0'> <img style='width: 700px' src='images/diagrama-final.svg' class="centered"> </p>
+  </article>
+  <article class='fill'>
+    <h3> Diagrama de secuencia <small>&quot;sincronizar módulo fotovoltáico&quot;</small> </h3>
+    <p> <img src='images/Milk_by_muShySoup.jpg'> </p>
+    <div class='source'>Por: Manuel Valls Vorndran</div>
+  </article>
+  <article class='nobackground'>
+    <h3>Diagrama secuencia módulo fotovoltaico</h3>
+    <iframe src='ds-modulo-fotovoltaico.html'></iframe>
+  </article>
+  <article>
+    <h3>Diagrama de clases módulo fotovoltaico I</h3>
+    <br>
+    <p> <img style='width: 800px' src='images/dc-modulo-fotovoltaico.png' class="centered"> </p>
+  </article>
+  <article>
+    <h3>Diagrama de clases módulo fotovoltaico II</h3>
+    <br>
+    <p> <img style='width: 800px' src='images/dc-hardware.png' class="centered"> </p>
+  </article>
+  <article>
+    <h3>Diagrama de clases módulo fotovoltaico III</h3>
+    <br>
+    <p> <img style='width: 800px' src='images/dc-paquete-meteorologia.png' class="centered"> </p>
+  </article>
+  <article class='fill'>
+    <h3> Diagrama de secuencia <small>&quot;comprar lote energía&quot;</small> </h3>
+    <p> <img src='images/Pink_by_muShySoup.jpg'> </p>
+    <div class='source'>Por: Juan Manuel Rodrígez González</div>
+  </article>
+  <article class='nobackground'>
+    <h3>Diagrama secuencia solicitar lote</h3>
+    <iframe src='ds-solicitar.html'></iframe>
+  </article>
+  <article class='nobackground'>
+    <h3>Diagrama secuencia negociar precio</h3>
+    <iframe src='ds-negociar.html'></iframe>
+  </article>
+  <article class='nobackground'>
+    <h3>Diagrama secuencia suministrar</h3>
+    <iframe src='ds-suministrar.html'></iframe>
+  </article>
+  <article  class='nobackground'>
+    <h3>Diagrama de clases gestión energía</h3>
+    <br>
+    <p style='margin-top: -24px;'> <img style='width: 750px' src='images/dc-gestion-energia.png' class="centered"> </p>
+  </article>
+  <article class='fill'>
+    <h3>Conclusiones<small> y dudas</small></h3>
+    <p> <img src='images/Blue_by_muShySoup.jpg'> </p>
+    <div class='source'>Por: Juan Manuel Rodrígez González</div>
+  </article>
+  <article>
+    <h3>Conclusiones</h3>
+    <p>Elegir una herramienta adecuada es fundamental</p>
+    <ul style='margin-top:0'>
+      <li><code>netbeans</code> en ocasiones lento e incluso inestable</li>
+      <li><code>bouml</code> conexión entre diagramas secuencia y clases peor definida</li>
+    </ul>
+    <p> El modelo simplifica a la realidad y supone cosas que actualmente 
+      no son admisibles </p>
+    <ul style='margin-top:0'>
+      <li><b>Negociación automatizada</b> Un mercado tan dinámico como el de 
+        la energía requiere actualmente de la supervisión humana. </li>
+      <li> La tecnología actual no permite un almacenamiento masivo a gran escala
+        a un coste viable para muchas empresas, pero de cara al futuro esto 
+        podría hacerse realidad. </li>
+    </ul>
+  </article>
+  <article>
+    <h3> Dudas </h3>
+    <p style='margin-top:0'> <img style='width: 600px' src='images/dudas.jpg' class="centered"> </p>
+  </article>
+  <article class='fill'>
+    <h3> Gracias! </h3>
+    <p> <img src='images/paneles.jpg'> </p>
+  </article>
+</section>
+</body>
+</html>
