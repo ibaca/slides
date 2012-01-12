@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>producto mas vendido sql</title>
+</head>
+
+<body style='font-size: 20px;'>
+<pre style='color:#000000;background:#ffffff;'><span style='color:#7f0055; font-weight:bold; '>SELECT</span> departamento,
+  producto
+<span style='color:#7f0055; font-weight:bold; '>FROM</span>
+  (<span style='color:#7f0055; font-weight:bold; '>SELECT</span> <span style='color:#7f0055; font-weight:bold; '>A</span>.nombre <span style='color:#7f0055; font-weight:bold; '>AS</span> departamento,
+    b.nombre       <span style='color:#7f0055; font-weight:bold; '>AS</span> producto,
+    <span style='color:#7f0055; font-weight:bold; '>sum</span>(cantidad)  <span style='color:#7f0055; font-weight:bold; '>AS</span> total
+  <span style='color:#7f0055; font-weight:bold; '>FROM</span> departamentos <span style='color:#7f0055; font-weight:bold; '>A</span>,
+    productos b,
+    venta_lista_productos <span style='color:#7f0055; font-weight:bold; '>c</span>
+  <span style='color:#7f0055; font-weight:bold; '>WHERE</span> <span style='color:#7f0055; font-weight:bold; '>A</span>.<span style='color:#7f0055; font-weight:bold; '>ID</span> = b.departamento_id
+  <span style='color:#7f0055; font-weight:bold; '>AND</span> b.<span style='color:#7f0055; font-weight:bold; '>ID</span>   = <span style='color:#7f0055; font-weight:bold; '>c</span>.producto_id
+  <span style='color:#7f0055; font-weight:bold; '>GROUP</span> <span style='color:#7f0055; font-weight:bold; '>BY</span> <span style='color:#7f0055; font-weight:bold; '>A</span>.nombre,
+    b.nombre
+  )
+<span style='color:#7f0055; font-weight:bold; '>WHERE</span> producto <span style='color:#7f0055; font-weight:bold; '>IN</span>
+  (<span style='color:#7f0055; font-weight:bold; '>SELECT</span> producto
+  <span style='color:#7f0055; font-weight:bold; '>FROM</span>
+    (<span style='color:#7f0055; font-weight:bold; '>SELECT</span> <span style='color:#7f0055; font-weight:bold; '>A</span>.nombre <span style='color:#7f0055; font-weight:bold; '>AS</span> departamento,
+      b.nombre       <span style='color:#7f0055; font-weight:bold; '>AS</span> producto,
+      <span style='color:#7f0055; font-weight:bold; '>sum</span>(cantidad)  <span style='color:#7f0055; font-weight:bold; '>AS</span> total
+    <span style='color:#7f0055; font-weight:bold; '>FROM</span> departamentos <span style='color:#7f0055; font-weight:bold; '>A</span>,
+      productos b,
+      venta_lista_productos <span style='color:#7f0055; font-weight:bold; '>c</span>
+    <span style='color:#7f0055; font-weight:bold; '>WHERE</span> <span style='color:#7f0055; font-weight:bold; '>A</span>.<span style='color:#7f0055; font-weight:bold; '>ID</span> = b.departamento_id
+    <span style='color:#7f0055; font-weight:bold; '>AND</span> b.<span style='color:#7f0055; font-weight:bold; '>ID</span>   = <span style='color:#7f0055; font-weight:bold; '>c</span>.producto_id
+    <span style='color:#7f0055; font-weight:bold; '>GROUP</span> <span style='color:#7f0055; font-weight:bold; '>BY</span> <span style='color:#7f0055; font-weight:bold; '>A</span>.nombre,
+      b.nombre
+    ) x
+  <span style='color:#7f0055; font-weight:bold; '>WHERE</span> total =
+    (<span style='color:#7f0055; font-weight:bold; '>SELECT</span> <span style='color:#7f0055; font-weight:bold; '>MAX</span>(total)
+    <span style='color:#7f0055; font-weight:bold; '>FROM</span>
+      (<span style='color:#7f0055; font-weight:bold; '>SELECT</span> <span style='color:#7f0055; font-weight:bold; '>A</span>.nombre <span style='color:#7f0055; font-weight:bold; '>AS</span> departamento,
+        b.nombre       <span style='color:#7f0055; font-weight:bold; '>AS</span> producto,
+        <span style='color:#7f0055; font-weight:bold; '>sum</span>(cantidad)  <span style='color:#7f0055; font-weight:bold; '>AS</span> total
+      <span style='color:#7f0055; font-weight:bold; '>FROM</span> departamentos <span style='color:#7f0055; font-weight:bold; '>A</span>,
+        productos b,
+        venta_lista_productos <span style='color:#7f0055; font-weight:bold; '>c</span>
+      <span style='color:#7f0055; font-weight:bold; '>WHERE</span> <span style='color:#7f0055; font-weight:bold; '>A</span>.<span style='color:#7f0055; font-weight:bold; '>ID</span> = b.departamento_id
+      <span style='color:#7f0055; font-weight:bold; '>AND</span> b.<span style='color:#7f0055; font-weight:bold; '>ID</span>   = <span style='color:#7f0055; font-weight:bold; '>c</span>.producto_id
+      <span style='color:#7f0055; font-weight:bold; '>GROUP</span> <span style='color:#7f0055; font-weight:bold; '>BY</span> <span style='color:#7f0055; font-weight:bold; '>A</span>.nombre,
+        b.nombre
+      ) y
+    <span style='color:#7f0055; font-weight:bold; '>WHERE</span> x.departamento = y.departamento
+    )
+  <span style='color:#7f0055; font-weight:bold; '>GROUP</span> <span style='color:#7f0055; font-weight:bold; '>BY</span> DEPARTAMENTO, PRODUCTO)
+</pre>
+</pre>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>beneficio anual sql</title>
+</head>
+
+<body style='font-size:20px'>
+<pre style='color:#000000;background:#ffffff;'><span style='color:#7f0055; font-weight:bold; '>SELECT</span> 
+  <span style='color:#7f0055; font-weight:bold; '>EXTRACT</span>(<span style='color:#7f0055; font-weight:bold; '>YEAR</span> <span style='color:#7f0055; font-weight:bold; '>FROM</span> fecha_hora) anyo,
+  <span style='color:#7f0055; font-weight:bold; '>SUM</span>(importe_total) beneficio_bruto
+<span style='color:#7f0055; font-weight:bold; '>FROM</span> ventas
+<span style='color:#7f0055; font-weight:bold; '>GROUP</span> <span style='color:#7f0055; font-weight:bold; '>BY</span> <span style='color:#7f0055; font-weight:bold; '>EXTRACT</span>(<span style='color:#7f0055; font-weight:bold; '>YEAR</span> <span style='color:#7f0055; font-weight:bold; '>FROM</span> fecha_hora)
+<span style='color:#7f0055; font-weight:bold; '>HAVING</span> 
+  <span style='color:#7f0055; font-weight:bold; '>EXTRACT</span>(<span style='color:#7f0055; font-weight:bold; '>YEAR</span> <span style='color:#7f0055; font-weight:bold; '>FROM</span> fecha_hora) 
+    >= (<span style='color:#7f0055; font-weight:bold; '>EXTRACT</span>(<span style='color:#7f0055; font-weight:bold; '>YEAR</span> <span style='color:#7f0055; font-weight:bold; '>FROM</span> <span style='color:#7f0055; font-weight:bold; '>CURRENT_DATE</span>)-10)
+<span style='color:#7f0055; font-weight:bold; '>ORDER</span> <span style='color:#7f0055; font-weight:bold; '>BY</span> anyo <span style='color:#7f0055; font-weight:bold; '>DESC</span>;
+</pre>
+</body>
+</html>

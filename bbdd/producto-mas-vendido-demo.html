@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>producto más vendido demostración</title>
+</head>
+
+<body style='font-size:20px'>
+<pre style='color:#000000;background:#ffffff;'><span style='color:#2a00ff; '>SELECT 
+  A</span><span style='color:#7f0055; font-weight:bold; '>.</span><span style='color:#2a00ff; '>NOMBRE   AS DEPARTAMENTO, 
+  B</span><span style='color:#7f0055; font-weight:bold; '>.</span><span style='color:#2a00ff; '>NOMBRE   AS PRODUCTO, 
+  C</span><span style='color:#7f0055; font-weight:bold; '>.</span><span style='color:#2a00ff; '>CANTIDAD AS CANTIDAD
+FROM DEPARTAMENTOS A, PRODUCTOS B, VENTA_LISTA_PRODUCTOS C</span>
+<span style='color:#2a00ff; '>WHERE</span><span style='color:#2a00ff; '> A</span><span style='color:#7f0055; font-weight:bold; '>.</span><span style='color:#2a00ff; '>ID = B</span><span style='color:#7f0055; font-weight:bold; '>.</span><span style='color:#2a00ff; '>DEPARTAMENTO_ID</span> <span style='color:#2a00ff; '>AND</span><span style='color:#2a00ff; '> B</span><span style='color:#7f0055; font-weight:bold; '>.</span><span style='color:#2a00ff; '>ID = C</span><span style='color:#7f0055; font-weight:bold; '>.</span><span style='color:#2a00ff; '>PRODUCTO_ID</span>
+
+
+<span style='color:#2a00ff; '>DEPARTAMENTO</span><span style='color:#2a00ff; '>             PRODUCTO               CANTIDAD   </span>
+------------------------ ---------------------- ----------
+<span style='color:#2a00ff; '>alimentacion</span><span style='color:#2a00ff; '>             Fanta                  10        </span>
+<span style='color:#2a00ff; '>alimentacion</span><span style='color:#2a00ff; '>             Fanta                  10        </span>
+<span style='color:#2a00ff; '>alimentacion</span><span style='color:#2a00ff; '>             CocaCola               10        </span>
+<span style='color:#2a00ff; '>alimentacion</span><span style='color:#2a00ff; '>             CocaCola               10        </span>
+<span style='color:#2a00ff; '>alimentacion</span><span style='color:#2a00ff; '>             CocaCola               2         </span>
+<span style='color:#2a00ff; '>alimentacion</span><span style='color:#2a00ff; '>             CocaCola               10        </span>
+<span style='color:#2a00ff; '>alimentacion</span><span style='color:#2a00ff; '>             CocaCola               10        </span>
+<span style='color:#2a00ff; '>alimentacion</span><span style='color:#2a00ff; '>             CocaCola               10        </span>
+<span style='color:#2a00ff; '>alimentacion</span><span style='color:#2a00ff; '>             CocaCola               10        </span>
+<span style='color:#2a00ff; '>alimentacion</span><span style='color:#2a00ff; '>             CocaCola               10        </span>
+<span style='color:#2a00ff; '>alimentacion</span><span style='color:#2a00ff; '>             CocaCola               10        </span>
+<span style='color:#2a00ff; '>alimentacion</span><span style='color:#2a00ff; '>             CocaCola               10        </span>
+<span style='color:#2a00ff; '>alimentacion</span><span style='color:#2a00ff; '>             CocaCola               10        </span>
+<span style='color:#2a00ff; '>mobiliario</span><span style='color:#2a00ff; '>               Silla                  5         </span>
+<span style='color:#2a00ff; '>mobiliario</span><span style='color:#2a00ff; '>               Silla                  5         </span>
+<span style='color:#2a00ff; '>mobiliario</span><span style='color:#2a00ff; '>               Silla                  5         </span>
+<span style='color:#2a00ff; '>mobiliario</span><span style='color:#2a00ff; '>               Silla                  5         </span>
+<span style='color:#2a00ff; '>mobiliario</span><span style='color:#2a00ff; '>               Silla                  5         </span>
+<span style='color:#2a00ff; '>mobiliario</span><span style='color:#2a00ff; '>               Silla                  5         </span>
+<span style='color:#2a00ff; '>mobiliario</span><span style='color:#2a00ff; '>               Silla                  5         </span>
+<span style='color:#2a00ff; '>mobiliario</span><span style='color:#2a00ff; '>               Silla                  5         </span>
+<span style='color:#2a00ff; '>mobiliario</span><span style='color:#2a00ff; '>               Silla                  5         </span>
+<span style='color:#2a00ff; '>informatica</span><span style='color:#2a00ff; '>              RAM                    3         </span>
+<span style='color:#2a00ff; '>informatica</span><span style='color:#2a00ff; '>              RAM                    3         </span>
+<span style='color:#2a00ff; '>informatica</span><span style='color:#2a00ff; '>              RAM                    3         </span>
+<span style='color:#2a00ff; '>informatica</span><span style='color:#2a00ff; '>              RAM                    3         </span>
+<span style='color:#2a00ff; '>limpieza</span><span style='color:#2a00ff; '>                 Lejia                  20        </span>
+<span style='color:#2a00ff; '>limpieza</span><span style='color:#2a00ff; '>                 Lejia                  20        </span>
+<span style='color:#2a00ff; '>limpieza</span><span style='color:#2a00ff; '>                 Lejia                  20        </span>
+<span style='color:#2a00ff; '>limpieza</span><span style='color:#2a00ff; '>                 Lejia                  20        </span>
+<span style='color:#2a00ff; '>limpieza</span><span style='color:#2a00ff; '>                 Lejia                  20        </span>
+<span style='color:#2a00ff; '>limpieza</span><span style='color:#2a00ff; '>                 Fairy                  5         </span>
+<span style='color:#2a00ff; '>limpieza</span><span style='color:#2a00ff; '>                 Fairy                  5      </span>
+
+
+<span style='color:#2a00ff; '>SELECT</span><span style='color:#2a00ff; '> </span><span style='color:#7f0055; font-weight:bold; '>*</span><span style='color:#2a00ff; '> FROM PROD_MAS_VENDIDO</span>
+
+<span style='color:#2a00ff; '>DEPARTAMENTO</span><span style='color:#2a00ff; '>                       PRODUCTO               </span>
+---------------------------------- -----------------------
+<span style='color:#2a00ff; '>mobiliario</span><span style='color:#2a00ff; '>                         Silla                  </span>
+<span style='color:#2a00ff; '>informatica</span><span style='color:#2a00ff; '>                        RAM                    </span>
+<span style='color:#2a00ff; '>limpieza</span><span style='color:#2a00ff; '>                           Lejia                  </span>
+<span style='color:#2a00ff; '>alimentacion</span><span style='color:#2a00ff; '>                       CocaCola</span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="26cm" height="15cm" viewBox="172 199 509 285" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #f1f1ff" x="173.9" y="227.95" width="506" height="255.05" rx="4" ry="4"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="173.9" y="227.95" width="506" height="255.05" rx="4" ry="4"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="487.35" y="378.1" width="117.05" height="36" rx="20" ry="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="487.35" y="378.1" width="117.05" height="36" rx="20" ry="20"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="545.875" y="400.9">
+      <tspan x="545.875" y="400.9">gestinar potencia</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="513.35" y="326.1" width="157.4" height="36" rx="20" ry="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="513.35" y="326.1" width="157.4" height="36" rx="20" ry="20"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="592.05" y="348.9">
+      <tspan x="592.05" y="348.9">gestionar nivel radiacion</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="550.35" y="275.1" width="111.25" height="36" rx="20" ry="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="550.35" y="275.1" width="111.25" height="36" rx="20" ry="20"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="605.975" y="297.9">
+      <tspan x="605.975" y="297.9">gestionar placas</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="297.15" y="276.1" width="122.65" height="36" rx="20" ry="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="297.15" y="276.1" width="122.65" height="36" rx="20" ry="20"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="358.475" y="298.9">
+      <tspan x="358.475" y="298.9">monitorizar placas</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="253.05" y="374.6" width="135.4" height="36" rx="20" ry="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="253.05" y="374.6" width="135.4" height="36" rx="20" ry="20"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="320.75" y="397.4">
+      <tspan x="320.75" y="397.4">monitorizar potencia</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="276.25" y="323.6" width="168.8" height="36" rx="20" ry="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="276.25" y="323.6" width="168.8" height="36" rx="20" ry="20"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="360.65" y="346.4">
+      <tspan x="360.65" y="346.4">monitorizar nivel radiacion</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="449.35" y="426.1" width="168.65" height="36" rx="20" ry="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="449.35" y="426.1" width="168.65" height="36" rx="20" ry="20"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="533.675" y="448.9">
+      <tspan x="533.675" y="448.9">gestionar almacenamiento</tspan>
+    </text>
+  </g>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="498.2" y1="214.545" x2="487.35" y2="396.1"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="506.188" y1="214.539" x2="513.35" y2="344.1"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="524.876" y1="214.556" x2="550.35" y2="293.1"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="490.041" y1="214.539" x2="449.35" y2="444.1"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="234.561" y1="214.543" x2="253.05" y2="392.6"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="244.589" y1="214.374" x2="276.25" y2="341.6"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="253.338" y1="200.575" x2="297.15" y2="294.1"/>
+  <g>
+    <rect style="fill: #ffffff" x="194.668" y="425.1" width="180.05" height="36" rx="20" ry="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="194.668" y="425.1" width="180.05" height="36" rx="20" ry="20"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="284.693" y="447.9">
+      <tspan x="284.693" y="447.9">monitorizar almacenamiento</tspan>
+    </text>
+  </g>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="219.733" y1="214.553" x2="194.668" y2="443.1"/>
+</svg>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="30cm" height="20cm" viewBox="171 90 599 390" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffebdf" x="625.8" y="208.2" width="143.1" height="269.8" rx="4" ry="4"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="625.8" y="208.2" width="143.1" height="269.8" rx="4" ry="4"/>
+  </g>
+  <g>
+    <rect style="fill: #f1f1ff" x="327.8" y="208.1" width="286.1" height="270.1" rx="4" ry="4"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="327.8" y="208.1" width="286.1" height="270.1" rx="4" ry="4"/>
+  </g>
+  <g>
+    <rect style="fill: #ffebdf" x="328.8" y="91.1" width="284.1" height="106" rx="4" ry="4"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="328.8" y="91.1" width="284.1" height="106" rx="4" ry="4"/>
+  </g>
+  <g>
+    <rect style="fill: #ffebdf" x="172.9" y="208.3" width="143" height="269.8" rx="4" ry="4"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="172.9" y="208.3" width="143" height="269.8" rx="4" ry="4"/>
+  </g>
+  <text style="fill: #000000;text-anchor:start;font-size:27.0929;font-family:sanserif;font-style:normal;font-weight:normal" x="360.9" y="155.1">
+    <tspan x="360.9" y="155.1">Agentes Hardware</tspan>
+  </text>
+  <text style="fill: #000000;text-anchor:start;font-size:27.0929;font-family:sanserif;font-style:normal;font-weight:normal" x="424.7" y="347.4">
+    <tspan x="424.7" y="347.4">Sistema</tspan>
+  </text>
+  <text style="fill: #000000;text-anchor:start;font-size:27.0933;font-family:sanserif;font-style:normal;font-weight:normal" x="191.6" y="333.5">
+    <tspan x="191.6" y="333.5">Agentes </tspan>
+    <tspan x="191.6" y="367.367">Técnicos</tspan>
+  </text>
+  <text style="fill: #000000;text-anchor:start;font-size:27.0933;font-family:sanserif;font-style:normal;font-weight:normal" x="632.8" y="315.3">
+    <tspan x="632.8" y="315.3">Agentes</tspan>
+    <tspan x="632.8" y="349.167">Suministro</tspan>
+    <tspan x="632.8" y="383.033">Consumo</tspan>
+  </text>
+</svg>

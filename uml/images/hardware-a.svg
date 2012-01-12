@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="23cm" height="7cm" viewBox="174 90 443 133" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffebdf" x="175.35" y="96" width="440.1" height="125.1" rx="4" ry="4"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="175.35" y="96" width="440.1" height="125.1" rx="4" ry="4"/>
+  </g>
+  <g>
+    <ellipse style="fill: #ffffff" cx="502.218" cy="109.1" rx="6" ry="6"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" cx="502.218" cy="109.1" rx="6" ry="6"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="478.218" y1="121.1" x2="526.218" y2="121.1"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="502.218" y1="115.1" x2="502.218" y2="145.1"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="502.218" y1="145.1" x2="478.218" y2="171.1"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="502.218" y1="145.1" x2="526.218" y2="171.1"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="502.218" y="195.9">
+      <tspan x="502.218" y="195.9">Hardware</tspan>
+      <tspan x="502.218" y="211.9">Almacenamiento</tspan>
+    </text>
+  </g>
+  <g>
+    <ellipse style="fill: #ffffff" cx="303.218" cy="111.1" rx="6" ry="6"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" cx="303.218" cy="111.1" rx="6" ry="6"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="279.218" y1="123.1" x2="327.218" y2="123.1"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="303.218" y1="117.1" x2="303.218" y2="147.1"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="303.218" y1="147.1" x2="279.218" y2="173.1"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="303.218" y1="147.1" x2="327.218" y2="173.1"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="303.218" y="197.9">
+      <tspan x="303.218" y="197.9">Hardware</tspan>
+      <tspan x="303.218" y="213.9">Módulo Fotovoltáico</tspan>
+    </text>
+  </g>
+</svg>

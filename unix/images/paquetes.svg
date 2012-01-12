@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="21cm" height="11cm" viewBox="-16 49 405 212" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <g>
+      <rect style="fill: #e7e6ff" x="120" y="51" width="120" height="38" rx="4" ry="4"/>
+      <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="120" y="51" width="120" height="38" rx="4" ry="4"/>
+    </g>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="152" y="75">
+      <tspan x="152" y="75">paquete</tspan>
+    </text>
+  </g>
+  <g>
+    <g>
+      <rect style="fill: #e6ffe6" x="301.8" y="222.2" width="87" height="38" rx="4" ry="4"/>
+      <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="301.8" y="222.2" width="87" height="38" rx="4" ry="4"/>
+    </g>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="321.6" y="246.2">
+      <tspan x="321.6" y="246.2">paquete</tspan>
+    </text>
+  </g>
+  <g>
+    <g>
+      <rect style="fill: #e6ffe6" x="196.533" y="222.2" width="87" height="38" rx="4" ry="4"/>
+      <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="196.533" y="222.2" width="87" height="38" rx="4" ry="4"/>
+    </g>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="216.333" y="246.2">
+      <tspan x="216.333" y="246.2">paquete</tspan>
+    </text>
+  </g>
+  <g>
+    <g>
+      <rect style="fill: #ffffe6" x="91.2667" y="222.2" width="87" height="38" rx="4" ry="4"/>
+      <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="91.2667" y="222.2" width="87" height="38" rx="4" ry="4"/>
+    </g>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="111.067" y="246.2">
+      <tspan x="111.067" y="246.2">paquete</tspan>
+    </text>
+  </g>
+  <g>
+    <g>
+      <rect style="fill: #ffffe6" x="-14" y="222.2" width="87" height="38" rx="4" ry="4"/>
+      <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="-14" y="222.2" width="87" height="38" rx="4" ry="4"/>
+    </g>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="5.8" y="246.2">
+      <tspan x="5.8" y="246.2">paquete</tspan>
+    </text>
+  </g>
+  <g>
+    <g>
+      <polygon style="fill: #ffffe6" points="106.5,127 170,151.5 106.5,176 43,151.5 "/>
+      <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="106.5,127 170,151.5 106.5,176 43,151.5 "/>
+      <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="106.5,127 170,151.5 106.5,176 43,151.5 "/>
+    </g>
+    <text style="fill: #000000;text-anchor:start;font-size:12.7998;font-family:sanserif;font-style:normal;font-weight:normal" x="64" y="156">
+      <tspan x="64" y="156">dependencias</tspan>
+    </text>
+  </g>
+  <g>
+    <g>
+      <polygon style="fill: #e6ffe6" points="268.078,126.272 331.578,150.772 268.078,175.272 204.578,150.772 "/>
+      <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="268.078,126.272 331.578,150.772 268.078,175.272 204.578,150.772 "/>
+      <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="268.078,126.272 331.578,150.772 268.078,175.272 204.578,150.772 "/>
+    </g>
+    <text style="fill: #000000;text-anchor:start;font-size:12.7998;font-family:sanserif;font-style:normal;font-weight:normal" x="231.578" y="155.272">
+      <tspan x="231.578" y="155.272">sugerencias</tspan>
+    </text>
+  </g>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 180 89 C 182,113 265,100 268.078,126.272"/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 180 89 C 182,113 103.422,100.728 106.5,127"/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 106.5 176 C 108.5,200 131.689,195.928 134.767,222.2"/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 106.5 176 C 108.5,200 26.4219,195.928 29.5,222.2"/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 268.078 175.272 C 270.078,199.272 342.222,195.928 345.3,222.2"/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 268.078 175.272 C 270.078,199.272 236.955,195.928 240.033,222.2"/>
+</svg>

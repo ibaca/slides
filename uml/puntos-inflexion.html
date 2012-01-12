@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>puntos inflexion sql</title>
+</head>
+
+<body style='font-size:20px'>
+<pre style='color:#000000;background:#ffffff;'><span style='color:#7f0055; font-weight:bold; '>SELECT</span> <span style='color:#7f0055; font-weight:bold; '>ID</span>,
+  nombre,
+  ventas,
+  fecha
+<span style='color:#7f0055; font-weight:bold; '>FROM</span>
+  (<span style='color:#7f0055; font-weight:bold; '>SELECT</span> p.<span style='color:#7f0055; font-weight:bold; '>ID</span>,
+    p.nombre,
+    v.ventas,
+    v.fecha
+  <span style='color:#7f0055; font-weight:bold; '>FROM</span> productos p,
+    (<span style='color:#7f0055; font-weight:bold; '>SELECT</span> producto_id             <span style='color:#7f0055; font-weight:bold; '>AS</span> <span style='color:#2a00ff; '>"PRODUCTO"</span>,
+      <span style='color:#7f0055; font-weight:bold; '>sum</span>(cantidad)                 <span style='color:#7f0055; font-weight:bold; '>AS</span> <span style='color:#2a00ff; '>"VENTAS"</span>,
+      <span style='color:#7f0055; font-weight:bold; '>to_char</span>(fecha_hora,<span style='color:#2a00ff; '>'YYYY/MM'</span>) <span style='color:#7f0055; font-weight:bold; '>AS</span> <span style='color:#2a00ff; '>"FECHA"</span>
+    <span style='color:#7f0055; font-weight:bold; '>FROM</span> venta_lista_productos
+    <span style='color:#7f0055; font-weight:bold; '>GROUP</span> <span style='color:#7f0055; font-weight:bold; '>BY</span> producto_id,
+      <span style='color:#7f0055; font-weight:bold; '>to_char</span>(fecha_hora,<span style='color:#2a00ff; '>'YYYY/MM'</span>)
+    <span style='color:#7f0055; font-weight:bold; '>ORDER</span> <span style='color:#7f0055; font-weight:bold; '>BY</span> producto_id,
+      <span style='color:#7f0055; font-weight:bold; '>to_char</span>(fecha_hora,<span style='color:#2a00ff; '>'YYYY/MM'</span>)
+    ) v
+  <span style='color:#7f0055; font-weight:bold; '>WHERE</span> p.<span style='color:#7f0055; font-weight:bold; '>ID</span> = v.producto
+  <span style='color:#7f0055; font-weight:bold; '>ORDER</span> <span style='color:#7f0055; font-weight:bold; '>BY</span> p.<span style='color:#7f0055; font-weight:bold; '>ID</span>,
+    v.fecha
+  ) h
+<span style='color:#7f0055; font-weight:bold; '>WHERE</span> (h.ventas &lt; <span style='color:#7f0055; font-weight:bold; '>nvl</span>(
+  (<span style='color:#7f0055; font-weight:bold; '>SELECT</span> v2.ventas
+  <span style='color:#7f0055; font-weight:bold; '>FROM</span> productos p2,
+    (<span style='color:#7f0055; font-weight:bold; '>SELECT</span> producto_id             <span style='color:#7f0055; font-weight:bold; '>AS</span> <span style='color:#2a00ff; '>"PRODUCTO"</span>,
+      <span style='color:#7f0055; font-weight:bold; '>sum</span>(cantidad)                 <span style='color:#7f0055; font-weight:bold; '>AS</span> <span style='color:#2a00ff; '>"VENTAS"</span>,
+      <span style='color:#7f0055; font-weight:bold; '>to_char</span>(fecha_hora,<span style='color:#2a00ff; '>'YYYY/MM'</span>) <span style='color:#7f0055; font-weight:bold; '>AS</span> <span style='color:#2a00ff; '>"FECHA"</span>
+    <span style='color:#7f0055; font-weight:bold; '>FROM</span> venta_lista_productos
+    <span style='color:#7f0055; font-weight:bold; '>GROUP</span> <span style='color:#7f0055; font-weight:bold; '>BY</span> producto_id,
+      <span style='color:#7f0055; font-weight:bold; '>to_char</span>(fecha_hora,<span style='color:#2a00ff; '>'YYYY/MM'</span>)
+    <span style='color:#7f0055; font-weight:bold; '>ORDER</span> <span style='color:#7f0055; font-weight:bold; '>BY</span> producto_id,
+      <span style='color:#7f0055; font-weight:bold; '>to_char</span>(fecha_hora,<span style='color:#2a00ff; '>'YYYY/MM'</span>)
+    ) v2
+  <span style='color:#7f0055; font-weight:bold; '>WHERE</span> p2.<span style='color:#7f0055; font-weight:bold; '>ID</span>  = v2.producto
+  <span style='color:#7f0055; font-weight:bold; '>AND</span> p2.<span style='color:#7f0055; font-weight:bold; '>ID</span>    = h.<span style='color:#7f0055; font-weight:bold; '>ID</span>
+  <span style='color:#7f0055; font-weight:bold; '>AND</span> v2.fecha = <span style='color:#7f0055; font-weight:bold; '>to_char</span>(<span style='color:#7f0055; font-weight:bold; '>add_months</span>(<span style='color:#7f0055; font-weight:bold; '>to_date</span>(h.fecha,<span style='color:#2a00ff; '>'yyyy/mm'</span>),-1),<span style='color:#2a00ff; '>'YYYY/MM'</span>)
+  ) ,0)
+<span style='color:#7f0055; font-weight:bold; '>AND</span> h.ventas &lt; <span style='color:#7f0055; font-weight:bold; '>nvl</span>(
+  (<span style='color:#7f0055; font-weight:bold; '>SELECT</span> v2.ventas
+  <span style='color:#7f0055; font-weight:bold; '>FROM</span> productos p2,
+    (<span style='color:#7f0055; font-weight:bold; '>SELECT</span> producto_id             <span style='color:#7f0055; font-weight:bold; '>AS</span> <span style='color:#2a00ff; '>"PRODUCTO"</span>,
+      <span style='color:#7f0055; font-weight:bold; '>sum</span>(cantidad)                 <span style='color:#7f0055; font-weight:bold; '>AS</span> <span style='color:#2a00ff; '>"VENTAS"</span>,
+      <span style='color:#7f0055; font-weight:bold; '>to_char</span>(fecha_hora,<span style='color:#2a00ff; '>'YYYY/MM'</span>) <span style='color:#7f0055; font-weight:bold; '>AS</span> <span style='color:#2a00ff; '>"FECHA"</span>
+    <span style='color:#7f0055; font-weight:bold; '>FROM</span> venta_lista_productos
+    <span style='color:#7f0055; font-weight:bold; '>GROUP</span> <span style='color:#7f0055; font-weight:bold; '>BY</span> producto_id,
+      <span style='color:#7f0055; font-weight:bold; '>to_char</span>(fecha_hora,<span style='color:#2a00ff; '>'YYYY/MM'</span>)
+    <span style='color:#7f0055; font-weight:bold; '>ORDER</span> <span style='color:#7f0055; font-weight:bold; '>BY</span> producto_id,
+      <span style='color:#7f0055; font-weight:bold; '>to_char</span>(fecha_hora,<span style='color:#2a00ff; '>'YYYY/MM'</span>)
+    ) v2
+  <span style='color:#7f0055; font-weight:bold; '>WHERE</span> p2.<span style='color:#7f0055; font-weight:bold; '>ID</span>  = v2.producto
+  <span style='color:#7f0055; font-weight:bold; '>AND</span> p2.<span style='color:#7f0055; font-weight:bold; '>ID</span>    = h.<span style='color:#7f0055; font-weight:bold; '>ID</span>
+  <span style='color:#7f0055; font-weight:bold; '>AND</span> v2.fecha = <span style='color:#7f0055; font-weight:bold; '>to_char</span>(<span style='color:#7f0055; font-weight:bold; '>add_months</span>(<span style='color:#7f0055; font-weight:bold; '>to_date</span>(h.fecha,<span style='color:#2a00ff; '>'yyyy/mm'</span>),1),<span style='color:#2a00ff; '>'YYYY/MM'</span>)
+  ) ,0))
+<span style='color:#7f0055; font-weight:bold; '>OR</span> (h.ventas > <span style='color:#7f0055; font-weight:bold; '>nvl</span>(
+  (<span style='color:#7f0055; font-weight:bold; '>SELECT</span> v2.ventas
+  <span style='color:#7f0055; font-weight:bold; '>FROM</span> productos p2,
+    (<span style='color:#7f0055; font-weight:bold; '>SELECT</span> producto_id             <span style='color:#7f0055; font-weight:bold; '>AS</span> <span style='color:#2a00ff; '>"PRODUCTO"</span>,
+      <span style='color:#7f0055; font-weight:bold; '>sum</span>(cantidad)                 <span style='color:#7f0055; font-weight:bold; '>AS</span> <span style='color:#2a00ff; '>"VENTAS"</span>,
+      <span style='color:#7f0055; font-weight:bold; '>to_char</span>(fecha_hora,<span style='color:#2a00ff; '>'YYYY/MM'</span>) <span style='color:#7f0055; font-weight:bold; '>AS</span> <span style='color:#2a00ff; '>"FECHA"</span>
+    <span style='color:#7f0055; font-weight:bold; '>FROM</span> venta_lista_productos
+    <span style='color:#7f0055; font-weight:bold; '>GROUP</span> <span style='color:#7f0055; font-weight:bold; '>BY</span> producto_id,
+      <span style='color:#7f0055; font-weight:bold; '>to_char</span>(fecha_hora,<span style='color:#2a00ff; '>'YYYY/MM'</span>)
+    <span style='color:#7f0055; font-weight:bold; '>ORDER</span> <span style='color:#7f0055; font-weight:bold; '>BY</span> producto_id,
+      <span style='color:#7f0055; font-weight:bold; '>to_char</span>(fecha_hora,<span style='color:#2a00ff; '>'YYYY/MM'</span>)
+    ) v2
+  <span style='color:#7f0055; font-weight:bold; '>WHERE</span> p2.<span style='color:#7f0055; font-weight:bold; '>ID</span>  = v2.producto
+  <span style='color:#7f0055; font-weight:bold; '>AND</span> p2.<span style='color:#7f0055; font-weight:bold; '>ID</span>    = h.<span style='color:#7f0055; font-weight:bold; '>ID</span>
+  <span style='color:#7f0055; font-weight:bold; '>AND</span> v2.fecha = <span style='color:#7f0055; font-weight:bold; '>to_char</span>(<span style='color:#7f0055; font-weight:bold; '>add_months</span>(<span style='color:#7f0055; font-weight:bold; '>to_date</span>(h.fecha,<span style='color:#2a00ff; '>'yyyy/mm'</span>),-1),<span style='color:#2a00ff; '>'YYYY/MM'</span>)
+  ) ,0)
+<span style='color:#7f0055; font-weight:bold; '>AND</span> h.ventas > <span style='color:#7f0055; font-weight:bold; '>nvl</span>(
+  (<span style='color:#7f0055; font-weight:bold; '>SELECT</span> v2.ventas
+  <span style='color:#7f0055; font-weight:bold; '>FROM</span> productos p2,
+    (<span style='color:#7f0055; font-weight:bold; '>SELECT</span> producto_id             <span style='color:#7f0055; font-weight:bold; '>AS</span> <span style='color:#2a00ff; '>"PRODUCTO"</span>,
+      <span style='color:#7f0055; font-weight:bold; '>sum</span>(cantidad)                 <span style='color:#7f0055; font-weight:bold; '>AS</span> <span style='color:#2a00ff; '>"VENTAS"</span>,
+      <span style='color:#7f0055; font-weight:bold; '>to_char</span>(fecha_hora,<span style='color:#2a00ff; '>'YYYY/MM'</span>) <span style='color:#7f0055; font-weight:bold; '>AS</span> <span style='color:#2a00ff; '>"FECHA"</span>
+    <span style='color:#7f0055; font-weight:bold; '>FROM</span> venta_lista_productos
+    <span style='color:#7f0055; font-weight:bold; '>GROUP</span> <span style='color:#7f0055; font-weight:bold; '>BY</span> producto_id,
+      <span style='color:#7f0055; font-weight:bold; '>to_char</span>(fecha_hora,<span style='color:#2a00ff; '>'YYYY/MM'</span>)
+    <span style='color:#7f0055; font-weight:bold; '>ORDER</span> <span style='color:#7f0055; font-weight:bold; '>BY</span> producto_id,
+      <span style='color:#7f0055; font-weight:bold; '>to_char</span>(fecha_hora,<span style='color:#2a00ff; '>'YYYY/MM'</span>)
+    ) v2
+  <span style='color:#7f0055; font-weight:bold; '>WHERE</span> p2.<span style='color:#7f0055; font-weight:bold; '>ID</span>  = v2.producto
+  <span style='color:#7f0055; font-weight:bold; '>AND</span> p2.<span style='color:#7f0055; font-weight:bold; '>ID</span>    = h.<span style='color:#7f0055; font-weight:bold; '>ID</span>
+  <span style='color:#7f0055; font-weight:bold; '>AND</span> v2.fecha = <span style='color:#7f0055; font-weight:bold; '>to_char</span>(<span style='color:#7f0055; font-weight:bold; '>add_months</span>(<span style='color:#7f0055; font-weight:bold; '>to_date</span>(h.fecha,<span style='color:#2a00ff; '>'yyyy/mm'</span>),1),<span style='color:#2a00ff; '>'YYYY/MM'</span>)
+  ) ,0));
+</pre>
+</body>
+</html>

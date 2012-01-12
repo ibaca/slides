@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="30cm" height="23cm" viewBox="47 30 586 455" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #f2eaf4" x="351.8" y="210.9" width="279.7" height="268.3" rx="4" ry="4"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="351.8" y="210.9" width="279.7" height="268.3" rx="4" ry="4"/>
+  </g>
+  <g>
+    <rect style="fill: #f2eaf4" x="160.5" y="31.2" width="411" height="173" rx="4" ry="4"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="160.5" y="31.2" width="411" height="173" rx="4" ry="4"/>
+  </g>
+  <g>
+    <rect style="fill: #f2eaf4" x="48.5" y="211.2" width="295" height="227" rx="4" ry="4"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="48.5" y="211.2" width="295" height="227" rx="4" ry="4"/>
+  </g>
+  <g>
+    <rect style="fill: #e6ffe6" x="220.9" y="220.3" width="89.6" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="220.9" y="220.3" width="89.6" height="36"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="265.7" y="242.3">producto</text>
+  </g>
+  <g>
+    <rect style="fill: #ffe6ea" x="232.45" y="390.2" width="66.5" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="232.45" y="390.2" width="66.5" height="36"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="265.7" y="412.2">venta</text>
+  </g>
+  <g>
+    <polygon style="fill: #ffffff" points="199.5,324.92 265.7,285.2 331.9,324.92 265.7,364.64 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="199.5,324.92 265.7,285.2 331.9,324.92 265.7,364.64 "/>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="269.7" y="279.2">N</text>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="269.7" y="386.64">N</text>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="265.7" y="328.92">lista_compra</text>
+  </g>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="265.7,390.2 267.5,390.2 267.5,364.64 265.7,364.64 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="265.7,257.309 265.7,257.309 265.7,285.2 265.7,285.2 "/>
+  <g>
+    <ellipse style="fill: #ffe6ea" cx="114.5" cy="347.1" rx="58.5" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="114.5" cy="347.1" rx="58.5" ry="18"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="114.5" y="351.1">fecha_hora</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="76" y1="355.1" x2="153" y2="355.1"/>
+  </g>
+  <g>
+    <ellipse style="fill: #ffe6ea" cx="115" cy="390.7" rx="35.4" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="115" cy="390.7" rx="35.4" ry="18"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="115" y="394.7">caja</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="99.6" y1="398.7" x2="130.4" y2="398.7"/>
+  </g>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="231.442,408.2 202.221,408.2 202.221,347.1 173,347.1 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="231.442,408.2 190.921,408.2 190.921,390.7 150.4,390.7 "/>
+  <g>
+    <rect style="fill: #e6ffe6" x="320.2" y="43.3" width="89.6" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="320.2" y="43.3" width="89.6" height="36"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="365" y="65.3">producto</text>
+  </g>
+  <g>
+    <rect style="fill: #ffe6ea" x="332.5" y="154.2" width="66.5" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="332.5" y="154.2" width="66.5" height="36"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="365.75" y="176.2">venta</text>
+  </g>
+  <g>
+    <polygon style="fill: #ffffff" points="345.5,114.2 365.5,102.2 385.5,114.2 365.5,126.2 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="345.5,114.2 365.5,102.2 385.5,114.2 365.5,126.2 "/>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="369.5" y="96.2">N</text>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="369.5" y="148.2">N</text>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="365.5" y="118.2"></text>
+  </g>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="365.75,154.2 365.75,134.196 365.5,134.196 365.5,126.2 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="365,80.3093 365,91.2546 365.5,91.2546 365.5,102.2 "/>
+  <g>
+    <ellipse style="fill: #ffe6ea" cx="237.5" cy="178.1" rx="58.5" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="237.5" cy="178.1" rx="58.5" ry="18"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="237.5" y="182.1">fecha_hora</text>
+  </g>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="331.492,172.2 313.746,172.2 313.746,178.1 296,178.1 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="331.492,172.2 315.546,172.2 315.546,126.3 299.6,126.3 "/>
+  <g>
+    <ellipse style="fill: #ffe6ea" cx="271.9" cy="126.3" rx="27.7" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="271.9" cy="126.3" rx="27.7" ry="18"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="271.9" y="130.3">id</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="264.2" y1="134.3" x2="279.6" y2="134.3"/>
+  </g>
+  <g>
+    <rect style="fill: #e6ffe6" x="503.7" y="217.9" width="89.6" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="503.7" y="217.9" width="89.6" height="36"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="548.5" y="239.9">producto</text>
+  </g>
+  <g>
+    <rect style="fill: #ffe6ea" x="515.25" y="387.8" width="66.5" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="515.25" y="387.8" width="66.5" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="520.25" y="392.8" width="56.5" height="26"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="548.5" y="409.8">venta</text>
+  </g>
+  <g>
+    <polygon style="fill: #ffffff" points="482.3,322.52 548.5,282.8 614.7,322.52 548.5,362.24 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="482.3,322.52 548.5,282.8 614.7,322.52 548.5,362.24 "/>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="552.5" y="276.8">N</text>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="552.5" y="384.24">N</text>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="548.5" y="326.52">lista_compra</text>
+  </g>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="548.5,387.8 550.3,387.8 550.3,362.24 548.5,362.24 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="548.5,254.909 548.5,254.909 548.5,282.8 548.5,282.8 "/>
+  <g>
+    <ellipse style="fill: #ffe6ea" cx="420.3" cy="365.7" rx="58.5" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="420.3" cy="365.7" rx="58.5" ry="18"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="420.3" y="369.7">fecha_hora</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="381.8" y1="373.7" x2="458.8" y2="373.7"/>
+  </g>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="514.261,405.8 496.52,405.8 496.52,365.7 478.8,365.7 "/>
+  <g>
+    <rect style="fill: #e6ffff" x="393.6" y="431.59" width="58.8" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="393.6" y="431.59" width="58.8" height="36"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="423" y="453.59">caja</text>
+  </g>
+  <g>
+    <polygon style="fill: #ffffff" points="508.6,449.59 528.6,437.59 548.6,449.59 528.6,461.59 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="508.6,449.59 528.6,437.59 548.6,449.59 528.6,461.59 "/>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="532.6" y="431.59"></text>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="532.6" y="483.59"></text>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="528.6" y="453.59"></text>
+  </g>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="548.5,423.8 548.5,436.695 548.6,436.695 548.6,449.59 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="453.407,449.59 453.407,449.59 508.6,449.59 508.6,449.59 "/>
+  <g>
+    <rect style="fill: #e6ffff" x="500.64" y="153.9" width="58.8" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="500.64" y="153.9" width="58.8" height="36"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="530.04" y="175.9">caja</text>
+  </g>
+  <g>
+    <polygon style="fill: #ffffff" points="424.64,171.9 444.64,159.9 464.64,171.9 444.64,183.9 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="424.64,171.9 444.64,159.9 464.64,171.9 444.64,183.9 "/>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="448.64" y="153.9"></text>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="448.64" y="205.9"></text>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="444.64" y="175.9"></text>
+  </g>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="399,172.2 411.82,172.2 411.82,171.9 424.64,171.9 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="499.633,171.9 499.633,171.9 464.64,171.9 464.64,171.9 "/>
+  <g>
+    <polygon style="fill: #ffffe6" points="411.5,101.2 463.7,101.2 475.7,113.2 475.7,135.2 411.5,135.2 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="411.5,101.2 463.7,101.2 475.7,113.2 475.7,135.2 411.5,135.2 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="463.7,101.2 463.7,113.2 475.7,113.2 "/>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="418.5" y="126.1">
+      <tspan x="418.5" y="126.1">con id</tspan>
+    </text>
+  </g>
+  <g>
+    <polygon style="fill: #ffffe6" points="119.8,271.9 233.6,271.9 245.6,283.9 245.6,305.9 119.8,305.9 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="119.8,271.9 233.6,271.9 245.6,283.9 245.6,305.9 119.8,305.9 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="233.6,271.9 233.6,283.9 245.6,283.9 "/>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="126.8" y="296.8">
+      <tspan x="126.8" y="296.8">caja como attr</tspan>
+    </text>
+  </g>
+  <g>
+    <polygon style="fill: #ffffe6" points="373.8,270.9 510.7,270.9 522.7,282.9 522.7,304.9 373.8,304.9 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="373.8,270.9 510.7,270.9 522.7,282.9 522.7,304.9 373.8,304.9 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="510.7,270.9 510.7,282.9 522.7,282.9 "/>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="380.8" y="295.8">
+      <tspan x="380.8" y="295.8">caja como entidad</tspan>
+    </text>
+  </g>
+  <text style="fill: #000000;text-anchor:start;font-size:28.2222;font-family:sanserif;font-style:normal;font-weight:700" x="169.5" y="59.2">
+    <tspan x="169.5" y="59.2">A</tspan>
+  </text>
+  <text style="fill: #000000;text-anchor:start;font-size:28.2222;font-family:sanserif;font-style:normal;font-weight:700" x="59.8" y="247.1">
+    <tspan x="59.8" y="247.1">B</tspan>
+  </text>
+  <text style="fill: #000000;text-anchor:start;font-size:28.2222;font-family:sanserif;font-style:normal;font-weight:700" x="363.1" y="242.8">
+    <tspan x="363.1" y="242.8">C</tspan>
+  </text>
+</svg>

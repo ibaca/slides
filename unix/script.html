@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>dpkg-counter</title>
+</head>
+
+<body>
+<div style="overflow:auto; height=200; width=100%;">
+<pre style="color:#000000;background:#ffffff;"><span style="color:#3f7f59; ">#!</span>/bin/bash
+<span style="color:#3f7f59; "># </span>
+<span style="color:#3f7f59; "># == Paquetes más recomendados </span>
+<span style="color:#3f7f59; "># </span>
+<span style="color:#3f7f59; "># Script que permite realizar busquedas sobre los paquetes</span>
+<span style="color:#3f7f59; "># instalados para obtener tres variantes de paquetes recomendados.
+#
+# depends: debe devolver una lista de paquetes<br />#   seguido del número de paquetes que dependen de él
+#<br /># recomends: debe devolver una lista de paquetes<br />#   seguido del número de paquetes que lo recomiendan
+#<br /># all: debe devolver una lista de paquetes<br />#   seguido de la suma de los resultados anteriores
+</span><span style="color:#3f7f59;"><span style="color:#3f7f59; ">#</span> </span>
+<span style="color:#3f7f59; "># == Ejemplos</span>
+<span style="color:#3f7f59; "># </span>
+<span style="color:#3f7f59; "># Muestra los 10 paquetes de los que más dependen</span>
+<span style="color:#3f7f59; "># ./dpkg-counter depends | awk '{print $2,$1}' | sort -n | tail</span>
+<span style="color:#3f7f59; "># ./dpkg-counter all | sort -k2 -n -r | head</span>
+<span style="color:#3f7f59; ">#</span>
+<span style="color:#3f7f59; "># Comparacion lado a lado de recomendados y dependencias de zlib*</span>
+<span style="color:#3f7f59; "># ./dpkg-counter -f 'vlc*' depends &gt;tmp1 &amp;&amp; \</span>
+<span style="color:#3f7f59; "># ./dpkg-counter -f 'vlc*' recomends &gt;tmp2 &amp;&amp; \</span>
+<span style="color:#3f7f59; "># diff -y tmp1 tmp2</span>
+<span style="color:#3f7f59; ">#</span>
+<span style="color:#3f7f59; "># Comparación de metodos de calculo de all</span>
+<span style="color:#3f7f59; "># ./dpkg-counter -m recursive all &gt;tmp1 &amp;&amp; \</span>
+<span style="color:#3f7f59; "># ./dpkg-counter -m dpkg all &gt;tmp2 &amp;&amp; \</span>
+<span style="color:#3f7f59; "># diff -y tmp1 tmp2 | head</span>
+
+<span style="color:#3f7f59; "># Detiene ejecucion si comando devuelve error</span>
+<span style="color:#7f0055; font-weight:bold; ">set</span> -o errexit 
+
+<span style="color:#3f7f59; "># Ignora mayusculas/minusculas en comparaciones</span>
+<span style="color:#7f0055; font-weight:bold; ">shopt</span> -s nocasematch
+
+<span style="color:#3f7f59; "># Variables</span>
+COUNTER_SCRIPT=$0
+FILTER_LIST=<span style="color:#2a00ff; ">""</span>
+ADD_DEPENDS=<span style="color:#2a00ff; ">""</span>
+ALL_METHOD=<span style="color:#2a00ff; ">"dpkg"</span>
+
+<span style="color:#3f7f59; "># Interrupciones</span>
+INTERRUPT_HANDLER() {
+    <span style="color:#7f0055; font-weight:bold; ">echo</span> <span style="color:#2a00ff; ">"SIGINT capturado. Deteniendo proceso..."</span>
+    <span style="color:#7f0055; font-weight:bold; ">exit</span> 1
+} 
+<span style="color:#7f0055; font-weight:bold; ">trap</span> INTERRUPT_HANDLER INT
+
+TERMINATION_HANDLER() { 
+    <span style="color:#7f0055; font-weight:bold; ">echo</span> <span style="color:#2a00ff; ">"SIGTERM capturado. Deteniendo proceso..."</span>
+    <span style="color:#7f0055; font-weight:bold; ">exit</span> 1
+} 
+<span style="color:#7f0055; font-weight:bold; ">trap</span> TERMINATION_HANDLER TERM
+
+USAGE() {
+cat <span style="color:#2a00ff; ">&lt;&lt;</span><span style="color:#2a00ff; ">EOF</span><span style="color:#2a00ff; "></span>
+<span style="color:#2a00ff; ">Usage:    dpkg-counter [OPTONS]... [ACTION]</span>
+<span style="color:#2a00ff; ">Actions:</span>
+<span style="color:#2a00ff; ">&nbsp;&nbsp;&nbsp;&nbsp;depends: Muestra una lista de paquetes y el numero de dependencias</span>
+<span style="color:#2a00ff; ">&nbsp;&nbsp;&nbsp;&nbsp;recomends: Muestra una lista de paquetes y el numero que lo recomiendan</span>
+<span style="color:#2a00ff; ">&nbsp;&nbsp;&nbsp;&nbsp;all: Muestra la suma de depends y recomends</span>
+<span style="color:#2a00ff; ">Options:</span>
+<span style="color:#2a00ff; ">&nbsp;&nbsp;&nbsp;&nbsp;-f &lt;filtro&gt;: filtra la busqueda de paquetes con el parametro filtro</span>
+<span style="color:#2a00ff; ">&nbsp;&nbsp;&nbsp;&nbsp;-m &lt;metodo&gt;: metodo de calculo de la acción all [ dpkg*, recursive ]</span>
+<span style="color:#2a00ff; ">EOF</span>
+<span style="color:#7f0055; font-weight:bold; ">exit</span> 1
+}
+
+<span style="color:#3f7f59; "># Acciones</span>
+DEPENDS() { QUERY_FORMAT=<span style="color:#2a00ff; ">'${Package}, ${Depends}\n'</span> &amp;&amp; COUNT; }
+RECOMENDS() { QUERY_FORMAT=<span style="color:#2a00ff; ">'${Package}, ${Suggests}\n'</span> &amp;&amp; COUNT; }
+ALL() { QUERY_FORMAT=<span style="color:#2a00ff; ">'${Package}, ${Depends}, ${Suggests}\n'</span> &amp;&amp; COUNT; }
+
+<span style="color:#3f7f59; "># Cuenta el numero de apariciones por paquete</span>
+COUNT() {
+dpkg-query --show -f=<span style="color:#2a00ff; ">"</span><span style="color:#2a00ff; ">$QUERY_FORMAT</span><span style="color:#2a00ff; ">"</span> $FILTER_LIST | <span style="color:#2a00ff; ">\</span>
+awk -F <span style="color:#2a00ff; ">'[,|]+'</span> <span style="color:#2a00ff; ">"</span><span style="color:#2a00ff; ">$AWK_COUNTER</span><span style="color:#2a00ff; ">"</span>;
+}
+
+<span style="color:#3f7f59; "># Calculo de all de forma recursiva</span>
+ALL_RECURSIVE() {
+dpkg-query --show -f=<span style="color:#2a00ff; ">'${Package}, ${Suggests}\n'</span> $FILTER_LIST | <span style="color:#2a00ff; ">\</span>
+awk -F <span style="color:#2a00ff; ">'[,|]+'</span> <span style="color:#2a00ff; ">"</span>
+<span style="color:#2a00ff; ">BEGIN { </span>
+<span style="color:#2a00ff; ">&nbsp;&nbsp;&nbsp;&nbsp;cmd = </span><span style="color:#2a00ff; ">\"</span><span style="color:#2a00ff; ">$COUNTER_SCRIPT</span><span style="color:#2a00ff; "> -f '</span><span style="color:#2a00ff; ">$FILTER_LIST</span><span style="color:#2a00ff; ">' depends 2&gt;</span><span style="color:#3f3fbf; ">/dev/null</span><span style="color:#2a00ff; ">\"</span><span style="color:#2a00ff; ">; </span>
+<span style="color:#2a00ff; ">&nbsp;&nbsp;&nbsp;&nbsp;while (cmd | getline depends) { </span>
+<span style="color:#2a00ff; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;split(depends,cols,</span><span style="color:#2a00ff; ">\"</span><span style="color:#2a00ff; "> </span><span style="color:#2a00ff; ">\"</span><span style="color:#2a00ff; ">); </span>
+<span style="color:#2a00ff; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;totals[cols[1]]=cols[2]; </span>
+<span style="color:#2a00ff; ">&nbsp;&nbsp;&nbsp;&nbsp;}</span>
+<span style="color:#2a00ff; ">&nbsp;&nbsp;&nbsp;&nbsp;if (depends &lt; 0) exit 1;</span>
+<span style="color:#2a00ff; ">}</span>
+<span style="color:#2a00ff; ">$AWK_COUNTER</span><span style="color:#2a00ff; ">"</span>;
+}
+
+<span style="color:#3f7f59; "># Calcula el numero de paquetes</span>
+AWK_COUNTER=<span style="color:#2a00ff; ">'</span>
+<span style="color:#2a00ff; "># Se filtra para eliminar espacios, comas y versiones</span>
+<span style="color:#2a00ff; ">{ gsub(/(([ ]+)|([, ]*$)|(\([^\)]+)))*/,"",$0); }</span>
+<span style="color:#2a00ff; "># Los paquetes sin sugerencias tambien se añaden</span>
+<span style="color:#2a00ff; ">{ if (!($1 in totals)) totals[$1]=0 }</span>
+<span style="color:#2a00ff; "># Para cada sugerencia, se suma al total</span>
+<span style="color:#2a00ff; ">NF &gt; 1 { for(i=2;i&lt;=NF;i++) totals[$i]++; }</span>
+<span style="color:#2a00ff; "># Al finalizar, se muestran los totales ordenados</span>
+<span style="color:#2a00ff; ">END { for (package in totals) print package,totals[package] | "sort";}'</span>
+
+<span style="color:#3f7f59; "># Comprueba la validez del parametro -m</span>
+ALL_METHOD_CHECK() {
+<span style="color:#7f0055; font-weight:bold; ">case</span> ${OPTARG} <span style="color:#7f0055; font-weight:bold; ">in</span>
+     dpkg) ALL_METHOD=${OPTARG};;
+recursive) ALL_METHOD=${OPTARG};;
+        *) ALL_INVALID;;
+<span style="color:#7f0055; font-weight:bold; ">esac</span>
+}
+
+<span style="color:#3f7f59; "># Selecciona el metodo de calculo all</span>
+ALL_SELECTOR() {
+<span style="color:#7f0055; font-weight:bold; ">case</span> ${ALL_METHOD} <span style="color:#7f0055; font-weight:bold; ">in</span>
+     dpkg) ALL;;
+recursive) ALL_RECURSIVE;;
+        *) ALL_INVALID;;
+<span style="color:#7f0055; font-weight:bold; ">esac</span>
+}
+
+<span style="color:#3f7f59; "># Problema en seleccion metodo de calculo accion all</span>
+
+ALL_INVALID() {
+<span style="color:#7f0055; font-weight:bold; ">echo</span> <span style="color:#2a00ff; ">"dpkg-counter: metodo invalido -- '</span><span style="color:#2a00ff; ">${ALL_METHOD}</span><span style="color:#2a00ff; ">'"</span>; USAGE;
+}
+
+<span style="color:#3f7f59; "># Parse options (argumentos que comienzan con '-')</span>
+<span style="color:#7f0055; font-weight:bold; ">while</span> <span style="color:#7f0055; font-weight:bold; ">getopts</span> <span style="color:#2a00ff; ">":f:m:"</span> option
+<span style="color:#7f0055; font-weight:bold; ">do</span>
+  <span style="color:#7f0055; font-weight:bold; ">case</span> $option <span style="color:#7f0055; font-weight:bold; ">in</span> 
+  f) FILTER_LIST=<span style="color:#2a00ff; ">"</span><span style="color:#2a00ff; ">${OPTARG}</span><span style="color:#2a00ff; ">"</span>;;
+  m) ALL_METHOD=<span style="color:#2a00ff; ">"</span><span style="color:#2a00ff; ">${OPTARG}</span><span style="color:#2a00ff; ">"</span>;;
+ <span style="color:#2a00ff; ">\?</span>) <span style="color:#7f0055; font-weight:bold; ">echo</span> <span style="color:#2a00ff; ">"dpkg-counter: opción invalida -- '</span><span style="color:#2a00ff; ">${OPTARG}</span><span style="color:#2a00ff; ">'"</span>; USAGE;;
+<span style="color:#7f0055; font-weight:bold; ">esac</span>
+<span style="color:#7f0055; font-weight:bold; ">done</span>
+
+<span style="color:#3f7f59; "># Se descarta un argumento de forma que $1 apunte al primer </span>
+<span style="color:#3f7f59; "># argumento no opcion en la linea de comando si hay alguno.</span>
+<span style="color:#7f0055; font-weight:bold; ">shift</span> $(($OPTIND -1))
+
+<span style="color:#3f7f59; "># Procesa la accion (depends, recomends o all)</span>
+<span style="color:#7f0055; font-weight:bold; ">case</span> $1 <span style="color:#7f0055; font-weight:bold; ">in</span> 
+  depends) DEPENDS;;
+recomends) RECOMENDS;;
+      all) ALL_SELECTOR;;
+        *) <span style="color:#7f0055; font-weight:bold; ">echo</span> <span style="color:#2a00ff; ">"dpkg-counter: acción invalida -- '</span><span style="color:#2a00ff; ">$1</span><span style="color:#2a00ff; ">'"</span>; USAGE;;
+<span style="color:#7f0055; font-weight:bold; ">esac</span>
+
+<span style="color:#3f7f59; "># Success</span>
+<span style="color:#7f0055; font-weight:bold; ">exit</span> 0
+</pre></div>
+</body>
+</html>

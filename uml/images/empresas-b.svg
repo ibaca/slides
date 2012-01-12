@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="26cm" height="11cm" viewBox="172 202 509 214" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #f1f1ff" x="173.9" y="228.95" width="506" height="185.8" rx="4" ry="4"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="173.9" y="228.95" width="506" height="185.8" rx="4" ry="4"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="186.05" y="364.85" width="129.7" height="36" rx="20" ry="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="186.05" y="364.85" width="129.7" height="36" rx="20" ry="20"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="250.9" y="387.65">
+      <tspan x="250.9" y="387.65">vender lote energía</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="556.45" y="256.85" width="112.6" height="36" rx="20" ry="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="556.45" y="256.85" width="112.6" height="36" rx="20" ry="20"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="612.75" y="279.65">
+      <tspan x="612.75" y="279.65">comprar energía</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="260.45" y="253.85" width="105.4" height="36" rx="20" ry="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="260.45" y="253.85" width="105.4" height="36" rx="20" ry="20"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="313.15" y="276.65">
+      <tspan x="313.15" y="276.65">control de flujo</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="320.45" y="300.85" width="127.1" height="36" rx="20" ry="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="320.45" y="300.85" width="127.1" height="36" rx="20" ry="20"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="384" y="323.65">
+      <tspan x="384" y="323.65">balance de energía</tspan>
+    </text>
+  </g>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="232.81" y1="214.557" x2="250.9" y2="364.85"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="336.703" y1="207.314" x2="313.15" y2="253.85"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="371.741" y1="207.315" x2="384" y2="300.85"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="619.386" y1="214.535" x2="612.75" y2="256.85"/>
+  <g>
+    <rect style="fill: #ffffff" x="370.45" y="365.85" width="106.35" height="36" rx="20" ry="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="370.45" y="365.85" width="106.35" height="36" rx="20" ry="20"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="423.625" y="388.65">
+      <tspan x="423.625" y="388.65">negociar precio</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="400.45" y="257.85" width="125.1" height="36" rx="20" ry="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="400.45" y="257.85" width="125.1" height="36" rx="20" ry="20"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="463" y="280.65">
+      <tspan x="463" y="280.65">reportar incidencia</tspan>
+    </text>
+  </g>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="412.445" y1="203.671" x2="463" y2="257.85"/>
+  <g>
+    <rect style="fill: #fff4ba" x="532.668" y="365.35" width="137.55" height="36" rx="20" ry="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="532.668" y="365.35" width="137.55" height="36" rx="20" ry="20"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="601.443" y="388.15">
+      <tspan x="601.443" y="388.15">comprar lote energía</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke-dasharray: 14; stroke: #000000" x1="532.668" y1="383.35" x2="481.272" y2="383.81"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="488.991,378.741 479.036,383.83 489.08,388.74 "/>
+  </g>
+  <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="469.668" y="363.15">
+    <tspan x="469.668" y="363.15">&lt;&lt;include&gt;&gt;</tspan>
+  </text>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 14; stroke: #000000" x1="315.75" y1="382.85" x2="365.979" y2="383.768"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="358.125,388.626 368.214,383.809 358.307,378.627 "/>
+  </g>
+  <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="309.668" y="363.15">
+    <tspan x="309.668" y="363.15">&lt;&lt;include&gt;&gt;</tspan>
+  </text>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="526,214 547,305.75 601.443,365.35 "/>
+</svg>

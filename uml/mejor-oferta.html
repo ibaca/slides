@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>mejor ofertas sql</title>
+</head>
+
+<body style='font-size:20px'>
+<pre style='color:#000000;background:#ffffff;'><span style='color:#7f0055; font-weight:bold; '>create</span> <span style='color:#7f0055; font-weight:bold; '>or</span> <span style='color:#7f0055; font-weight:bold; '>replace</span>
+<span style='color:#7f0055; font-weight:bold; '>PROCEDURE</span> <span style='color:#2a00ff; '>"MEJOR_OFERTA"</span> 
+(
+  a_producto_id <span style='color:#7f0055; font-weight:bold; '>IN</span> productos.<span style='color:#7f0055; font-weight:bold; '>ID</span>%<span style='color:#7f0055; font-weight:bold; '>TYPE</span>  
+, a_oferta_id <span style='color:#7f0055; font-weight:bold; '>out</span> ofertas.<span style='color:#7f0055; font-weight:bold; '>ID</span>%<span style='color:#7f0055; font-weight:bold; '>TYPE</span>
+, a_oferta_cantidad <span style='color:#7f0055; font-weight:bold; '>out</span> pedidos.cantidad%<span style='color:#7f0055; font-weight:bold; '>TYPE</span>  
+) <span style='color:#7f0055; font-weight:bold; '>AS</span>
+p_producto productos%<span style='color:#7f0055; font-weight:bold; '>rowtype</span>;
+p_pedido_min <span style='color:#7f0055; font-weight:bold; '>NUMBER</span>;
+p_pedido_max <span style='color:#7f0055; font-weight:bold; '>NUMBER</span>;
+p_ventas_diarias <span style='color:#7f0055; font-weight:bold; '>NUMBER</span> := 15;
+p_perdidas <span style='color:#7f0055; font-weight:bold; '>NUMBER</span>;
+p_pedido_coste <span style='color:#7f0055; font-weight:bold; '>NUMBER</span>;
+p_dias_restantes <span style='color:#7f0055; font-weight:bold; '>NUMBER</span>;
+p_paquete_min <span style='color:#7f0055; font-weight:bold; '>NUMBER</span>;
+p_paquete_max <span style='color:#7f0055; font-weight:bold; '>NUMBER</span>;
+p_mejor_oferta <span style='color:#7f0055; font-weight:bold; '>NUMBER</span>;
+p_ninguna_oferta <span style='color:#7f0055; font-weight:bold; '>BOOLEAN</span> := <span style='color:#7f0055; font-weight:bold; '>true</span>;
+<span style='color:#7f0055; font-weight:bold; '>CURSOR</span> cur_ofertas <span style='color:#7f0055; font-weight:bold; '>IS</span> 
+  <span style='color:#7f0055; font-weight:bold; '>SELECT</span> o.<span style='color:#7f0055; font-weight:bold; '>ID</span> oferta_id, p.<span style='color:#7f0055; font-weight:bold; '>ID</span> proveedor_id, o.paquete paquete, o.tardanza tardanza, o.precio precio, o.minimo minimo
+  <span style='color:#7f0055; font-weight:bold; '>FROM</span> ofertas o, proveedores p 
+  <span style='color:#7f0055; font-weight:bold; '>WHERE</span> o.proveedor_id = p.<span style='color:#7f0055; font-weight:bold; '>ID</span> <span style='color:#7f0055; font-weight:bold; '>AND</span> o.producto_id = a_producto_id <span style='color:#7f0055; font-weight:bold; '>AND</span>
+    <span style='color:#7f0055; font-weight:bold; '>greatest</span>(o.minimo, o.paquete) &lt;= p_pedido_max;
+<span style='color:#7f0055; font-weight:bold; '>BEGIN</span>
+  <span style='color:#3f7f59; '>-- Calcular el min y max del pedido</span>
+  <span style='color:#7f0055; font-weight:bold; '>SELECT</span> * <span style='color:#7f0055; font-weight:bold; '>INTO</span> p_producto <span style='color:#7f0055; font-weight:bold; '>FROM</span> productos <span style='color:#7f0055; font-weight:bold; '>WHERE</span> <span style='color:#7f0055; font-weight:bold; '>ID</span> = a_producto_id;
+  p_pedido_min := p_producto.stock_min - p_producto.stock_num;
+  p_pedido_max := p_producto.stock_max - p_producto.stock_num;
+    
+  <span style='color:#3f7f59; '>-- Dias restantes con producto</span>
+  p_dias_restantes := <span style='color:#7f0055; font-weight:bold; '>round</span>((p_producto.existencias_num + p_producto.stock_num) / p_ventas_diarias,2);
+  
+  <span style='color:#3f7f59; '>-- Log</span>
+  <span style='color:#7f0055; font-weight:bold; '>dbms_output</span>.<span style='color:#7f0055; font-weight:bold; '>put_line</span>(<span style='color:#2a00ff; '>'calculando pedido producto:'</span>||a_producto_id||<span style='color:#2a00ff; '>' (unid.min:'</span>||p_pedido_min||<span style='color:#2a00ff; '>', unid.max:'</span>||p_pedido_max||<span style='color:#2a00ff; '>', dias.restantes:'</span>||p_dias_restantes||<span style='color:#2a00ff; '>')'</span>);
+  
+  <span style='color:#3f7f59; '>-- Para cada oferta posible</span>
+  <span style='color:#7f0055; font-weight:bold; '>FOR</span> oferta_rec <span style='color:#7f0055; font-weight:bold; '>IN</span> cur_ofertas <span style='color:#7f0055; font-weight:bold; '>loop</span>
+    
+    <span style='color:#3f7f59; '>-- Para evitar division 0</span>
+    <span style='color:#7f0055; font-weight:bold; '>CONTINUE</span> <span style='color:#7f0055; font-weight:bold; '>WHEN</span> oferta_rec.paquete = 0;
+    
+    <span style='color:#3f7f59; '>-- Rango de paquetes</span>
+    p_paquete_min := <span style='color:#7f0055; font-weight:bold; '>ceil</span>(<span style='color:#7f0055; font-weight:bold; '>greatest</span>(p_pedido_min,oferta_rec.minimo)/oferta_rec.paquete);
+    p_paquete_max := <span style='color:#7f0055; font-weight:bold; '>floor</span>(p_pedido_max/oferta_rec.paquete);
+    <span style='color:#7f0055; font-weight:bold; '>dbms_output</span>.<span style='color:#7f0055; font-weight:bold; '>put_line</span>(<span style='color:#2a00ff; '>'calculando oferta:'</span>||oferta_rec.oferta_id||<span style='color:#2a00ff; '>' (paq.min:'</span>||p_paquete_min||<span style='color:#2a00ff; '>', paq.max:'</span>||p_paquete_max||<span style='color:#2a00ff; '>')'</span>);
+    <span style='color:#7f0055; font-weight:bold; '>CONTINUE</span> <span style='color:#7f0055; font-weight:bold; '>WHEN</span> p_paquete_min > p_paquete_max;
+       
+    <span style='color:#3f7f59; '>-- Calculo perdidas</span>
+    p_perdidas := p_ventas_diarias * <span style='color:#7f0055; font-weight:bold; '>greatest</span>(oferta_rec.tardanza-p_dias_restantes,0);
+    
+    <span style='color:#3f7f59; '>-- Para cada pedido posible</span>
+    <span style='color:#7f0055; font-weight:bold; '>FOR</span> paquete_tamanio <span style='color:#7f0055; font-weight:bold; '>IN</span> p_paquete_min..p_paquete_max <span style='color:#7f0055; font-weight:bold; '>loop</span>
+    
+    <span style='color:#3f7f59; '>-- Calculo coste pedido (para paquete_min unidades)</span>
+    p_pedido_coste := (paquete_tamanio * oferta_rec.paquete) * oferta_rec.precio;
+    <span style='color:#3f7f59; '>-- Pedido coste menos periddas</span>
+    p_pedido_coste := p_pedido_coste + p_perdidas;
+    <span style='color:#3f7f59; '>-- Pedido coste unitario</span>
+    p_pedido_coste := <span style='color:#7f0055; font-weight:bold; '>round</span>(p_pedido_coste / (paquete_tamanio * oferta_rec.paquete),2);
+        
+    <span style='color:#3f7f59; '>-- coste unitario menor => mejor oferta</span>
+    <span style='color:#7f0055; font-weight:bold; '>IF</span> p_mejor_oferta <span style='color:#7f0055; font-weight:bold; '>IS</span> <span style='color:#7f0055; font-weight:bold; '>NULL</span> <span style='color:#7f0055; font-weight:bold; '>OR</span> p_pedido_coste &lt; p_mejor_oferta  <span style='color:#7f0055; font-weight:bold; '>THEN</span>
+      p_mejor_oferta := p_pedido_coste;
+      <span style='color:#3f7f59; '>-- se actualizan valores retorno</span>
+      a_oferta_id := oferta_rec.oferta_id;
+      a_oferta_cantidad := paquete_tamanio;
+      p_ninguna_oferta := <span style='color:#7f0055; font-weight:bold; '>false</span>;
+    <span style='color:#7f0055; font-weight:bold; '>END IF</span>;
+    
+    <span style='color:#7f0055; font-weight:bold; '>dbms_output</span>.<span style='color:#7f0055; font-weight:bold; '>put_line</span>(<span style='color:#2a00ff; '>'calculando oferta:'</span>||oferta_rec.oferta_id||<span style='color:#2a00ff; '>'.'</span>||paquete_tamanio||<span style='color:#2a00ff; '>' (perdidas:'</span>||p_perdidas||<span style='color:#2a00ff; '>', coste.unit:'</span>||p_pedido_coste||<span style='color:#2a00ff; '>', coste.mejor:'</span>||p_mejor_oferta||<span style='color:#2a00ff; '>')'</span>);
+    <span style='color:#7f0055; font-weight:bold; '>END loop</span> paquetes;
+    
+  <span style='color:#7f0055; font-weight:bold; '>END loop</span> ofertas;
+  
+  <span style='color:#7f0055; font-weight:bold; '>IF</span> p_ninguna_oferta <span style='color:#7f0055; font-weight:bold; '>THEN</span>
+    <span style='color:#7f0055; font-weight:bold; '>raise_application_error</span>(-20000, <span style='color:#2a00ff; '>'ninguna oferta es aplicable.'</span>);
+  <span style='color:#7f0055; font-weight:bold; '>END IF</span>;
+  
+<span style='color:#7f0055; font-weight:bold; '>END</span> mejor_oferta;
+</pre>
+</body>
+</html>

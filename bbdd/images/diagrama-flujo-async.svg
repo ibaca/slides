@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="30cm" height="9cm" viewBox="62 48 585 178" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffffff" x="64" y="78.1929" width="230.1" height="36" rx="20" ry="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="64" y="78.1929" width="230.1" height="36" rx="20" ry="20"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.7998;font-family:sanserif;font-style:normal;font-weight:normal" x="179.05" y="100.093">
+      <tspan x="179.05" y="100.093">producto.existencias actualizado</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="92.6" y="136.8" width="192.45" height="36" rx="20" ry="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="92.6" y="136.8" width="192.45" height="36" rx="20" ry="20"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.7998;font-family:sanserif;font-style:normal;font-weight:normal" x="188.825" y="158.7">
+      <tspan x="188.825" y="158.7">producto.stock actualizado</tspan>
+    </text>
+  </g>
+  <g>
+    <polygon style="fill: #ffffff" points="336,96.1929 356,76.1929 376,96.1929 356,116.193 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="336,96.1929 356,76.1929 376,96.1929 356,116.193 "/>
+  </g>
+  <text style="fill: #000000;text-anchor:start;font-size:12.7998;font-family:sanserif;font-style:normal;font-weight:normal" x="303" y="71">
+    <tspan x="303" y="71">faltan existencias?</tspan>
+  </text>
+  <text style="fill: #000000;text-anchor:start;font-size:12.7998;font-family:sanserif;font-style:normal;font-weight:normal" x="323.6" y="130.7">
+    <tspan x="323.6" y="130.7">falta stock?</tspan>
+  </text>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="285.05" y1="154.8" x2="331.542" y2="154.8"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="313.778,164.8 333.778,154.8 313.778,144.8 "/>
+  </g>
+  <g>
+    <polygon style="fill: #ffffff" points="336.014,154.8 356.014,134.8 376.014,154.8 356.014,174.8 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="336.014,154.8 356.014,134.8 376.014,154.8 356.014,174.8 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="412.6" y="78.1929" width="234.15" height="36" rx="20" ry="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="412.6" y="78.1929" width="234.15" height="36" rx="20" ry="20"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.7998;font-family:sanserif;font-style:normal;font-weight:normal" x="529.675" y="100.093">
+      <tspan x="529.675" y="100.093">proceso actualización existencias</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="294.1" y1="96.1929" x2="331.528" y2="96.1929"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="313.764,106.193 333.764,96.1929 313.764,86.1929 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="419.6" y="136.8" width="196.5" height="36" rx="20" ry="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="419.6" y="136.8" width="196.5" height="36" rx="20" ry="20"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.7998;font-family:sanserif;font-style:normal;font-weight:normal" x="517.85" y="158.7">
+      <tspan x="517.85" y="158.7">proceso actualización stock</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="376.014" y1="154.8" x2="415.128" y2="154.8"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="397.364,164.8 417.364,154.8 397.364,144.8 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="376" y1="96.1929" x2="408.128" y2="96.1929"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="390.364,106.193 410.364,96.1929 390.364,86.1929 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="393" y1="50" x2="374" y2="204"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="366.524,182.926 374,204 374,204 "/>
+  </g>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="383" y1="200" x2="401" y2="53"/>
+  <text style="fill: #000000;text-anchor:start;font-size:12.7998;font-family:sanserif;font-style:normal;font-weight:normal" x="315" y="223">
+    <tspan x="315" y="223">proceso asincrono</tspan>
+  </text>
+</svg>

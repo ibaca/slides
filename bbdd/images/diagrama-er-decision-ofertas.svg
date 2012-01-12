@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="37cm" height="12cm" viewBox="47 30 732 221" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #f2eaf4" x="421.2" y="31.9" width="357" height="217.3" rx="4" ry="4"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="421.2" y="31.9" width="357" height="217.3" rx="4" ry="4"/>
+  </g>
+  <g>
+    <rect style="fill: #f2eaf4" x="48.5" y="31.2" width="361.7" height="218" rx="4" ry="4"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="48.5" y="31.2" width="361.7" height="218" rx="4" ry="4"/>
+  </g>
+  <g>
+    <rect style="fill: #e6ffe6" x="58.5" y="41.9" width="89.6" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="58.5" y="41.9" width="89.6" height="36"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="103.3" y="63.9">producto</text>
+  </g>
+  <g>
+    <rect style="fill: #e7e6ff" x="303.5" y="41.9" width="97.3" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="303.5" y="41.9" width="97.3" height="36"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="352.15" y="63.9">proveedor</text>
+  </g>
+  <g>
+    <polygon style="fill: #ffffff" points="206,59.8 226,47.8 246,59.8 226,71.8 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="206,59.8 226,47.8 246,59.8 226,71.8 "/>
+    <text style="fill: #000000;text-anchor:end;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="200" y="53.8">M</text>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="252" y="53.8">N</text>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="226" y="63.8"></text>
+  </g>
+  <g>
+    <ellipse style="fill: #e7e6ff" cx="365.65" cy="107.8" rx="31.55" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="365.65" cy="107.8" rx="31.55" ry="18"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="365.65" y="111.8">cif</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="354.1" y1="115.8" x2="377.2" y2="115.8"/>
+  </g>
+  <g>
+    <rect style="fill: #e7e6ff" x="188.9" y="92.8" width="74.2" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="188.9" y="92.8" width="74.2" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="193.9" y="97.8" width="64.2" height="26"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="226" y="114.8">oferta</text>
+  </g>
+  <g>
+    <ellipse style="fill: #e7e6ff" cx="301" cy="141.9" rx="27.7" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="301" cy="141.9" rx="27.7" ry="18"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="301" y="145.9">id</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 6; stroke: #000000" x1="293.3" y1="149.9" x2="308.7" y2="149.9"/>
+  </g>
+  <g>
+    <ellipse style="fill: #e6ffe6" cx="103.6" cy="108.9" rx="43.1" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="103.6" cy="108.9" rx="43.1" ry="18"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="103.6" y="112.9">codigo</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="80.5" y1="116.9" x2="126.7" y2="116.9"/>
+  </g>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="357.506" y1="78.9033" x2="360.373" y2="89.0774"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="264.095" y1="126.597" x2="276.739" y2="131.84"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="103.484" y1="89.8969" x2="103.416" y2="78.9031"/>
+  <g>
+    <rect style="fill: #e7e6ff" x="188.9" y="203.9" width="74.2" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="188.9" y="203.9" width="74.2" height="36"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="226" y="225.9">pedido</text>
+  </g>
+  <g>
+    <ellipse style="fill: #e7e6ff" cx="303.2" cy="221.374" rx="27.7" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="303.2" cy="221.374" rx="27.7" ry="18"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="303.2" y="225.374">id</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="295.5" y1="229.374" x2="310.9" y2="229.374"/>
+  </g>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="264.091" y1="221.64" x2="274.504" y2="221.57"/>
+  <g>
+    <polygon style="fill: #ffffff" points="206,163.9 226,151.9 246,163.9 226,175.9 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="206,163.9 226,151.9 246,163.9 226,175.9 "/>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="230" y="145.9">N</text>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="230" y="197.9">1</text>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="226" y="167.9"></text>
+  </g>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="226,128.8 226,128.8 226,151.9 226,151.9 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="226,203.9 226,203.9 226,175.9 226,175.9 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="302.494,59.9 274.247,59.9 274.247,59.8 246,59.8 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="149.106,59.9 177.553,59.9 177.553,59.8 206,59.8 "/>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="226,95.3 223.5,95.3 223.5,74.3 226,74.3 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="226,90.3 228.5,90.3 228.5,69.3 226,69.3 "/>
+  </g>
+  <g>
+    <rect style="fill: #e6ffe6" x="428.5" y="42.9" width="89.6" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="428.5" y="42.9" width="89.6" height="36"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="473.3" y="64.9">producto</text>
+  </g>
+  <g>
+    <rect style="fill: #e7e6ff" x="673.5" y="42.9" width="97.3" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="673.5" y="42.9" width="97.3" height="36"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="722.15" y="64.9">proveedor</text>
+  </g>
+  <g>
+    <ellipse style="fill: #e7e6ff" cx="722.65" cy="108.8" rx="31.55" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="722.65" cy="108.8" rx="31.55" ry="18"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="722.65" y="112.8">cif</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="711.1" y1="116.8" x2="734.2" y2="116.8"/>
+  </g>
+  <g>
+    <rect style="fill: #e7e6ff" x="558.9" y="38.8" width="74.2" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="558.9" y="38.8" width="74.2" height="36"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="596" y="60.8">oferta</text>
+  </g>
+  <g>
+    <ellipse style="fill: #e7e6ff" cx="644" cy="108.9" rx="27.7" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="644" cy="108.9" rx="27.7" ry="18"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="644" y="112.9">id</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="636.3" y1="116.9" x2="651.7" y2="116.9"/>
+  </g>
+  <g>
+    <ellipse style="fill: #e6ffe6" cx="473.6" cy="109.9" rx="43.1" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="473.6" cy="109.9" rx="43.1" ry="18"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="473.6" y="113.9">codigo</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="450.5" y1="117.9" x2="496.7" y2="117.9"/>
+  </g>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="722.348" y1="79.9033" x2="722.452" y2="89.7967"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="613.496" y1="75.7906" x2="629.141" y2="92.7714"/>
+  <g>
+    <rect style="fill: #e7e6ff" x="558.9" y="202.9" width="74.2" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="558.9" y="202.9" width="74.2" height="36"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="596" y="224.9">pedido</text>
+  </g>
+  <g>
+    <ellipse style="fill: #e7e6ff" cx="673.2" cy="220.374" rx="27.7" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="673.2" cy="220.374" rx="27.7" ry="18"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="673.2" y="224.374">id</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="665.5" y1="228.374" x2="680.9" y2="228.374"/>
+  </g>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="634.091" y1="220.64" x2="644.504" y2="220.57"/>
+  <g>
+    <polygon style="fill: #ffffff" points="576,157.9 596,145.9 616,157.9 596,169.9 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="576,157.9 596,145.9 616,157.9 596,169.9 "/>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="600" y="139.9">N</text>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="600" y="191.9">1</text>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="596" y="161.9"></text>
+  </g>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="596,84.3257 596,84.3257 596,145.9 596,145.9 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="596,202.9 596,202.9 596,169.9 596,169.9 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="672.494,60.9 653.302,60.9 653.302,61.06 634.109,61.06 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="519.106,60.9 538.498,60.9 538.498,61.06 557.891,61.06 "/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="473.416" y1="79.9031" x2="473.484" y2="90.8969"/>
+  <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="544.2" y="52.2">
+    <tspan x="544.2" y="52.2">N</tspan>
+  </text>
+  <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="641.5" y="50.8">
+    <tspan x="641.5" y="50.8">N</tspan>
+  </text>
+  <text style="fill: #000000;text-anchor:start;font-size:28.2222;font-family:sanserif;font-style:normal;font-weight:700" x="59.8" y="232.6">
+    <tspan x="59.8" y="232.6">A</tspan>
+  </text>
+  <text style="fill: #000000;text-anchor:start;font-size:28.2222;font-family:sanserif;font-style:normal;font-weight:700" x="433.1" y="234.5">
+    <tspan x="433.1" y="234.5">B</tspan>
+  </text>
+</svg>

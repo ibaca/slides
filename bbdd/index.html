@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+
+<!--
+  Google HTML5 slide template
+
+  Authors: Luke Mahé (code)
+           Marcin Wichary (code and design)
+           
+           Dominic Mazzoni (browser compatibility)
+           Charles Chen (ChromeVox support)
+
+  URL: http://code.google.com/p/html5slides/
+-->
+
+<html>
+  <head>
+    <title>Presentation</title>
+
+    <meta charset='utf-8'>
+    <script src='../slides.js'></script>
+  </head>
+  
+  <style>
+   .slides.template-inftel > article:not(.nobackground):not(.biglogo) {
+  		background: url(images/inftel-logo.png) 560px 605px no-repeat;
+    	background-color: white;  
+	} 
+    
+    
+  </style>
+
+  <body style='display: none'>
+
+    <section class='slides layout-regular template-inftel'>
+      
+      <!-- Your slides (<article>s) go here. Delete or comment out the
+           slides below. -->
+        
+        
+      
+      <article>
+      	<h1>
+        	Desarrollo de base de datos para un gran supermercado<br>
+        <span style="font-size:50%">
+        Bases de Datos. El modelo de datos relacional y el lenguaje SQL
+        </span>
+        </h1>
+        <p>
+        Juan Antono Cobo Zamora<br>
+        Ignacio Baca Moreno-Torres<br>
+        Jesús S. Barriga Antonio<br>
+        Diciembre 2011
+        </p>
+      </article>
+      
+      <article class='fill'>
+        <h3>
+          Planteamiento inicial
+        </h3>
+        <p>
+          <img src='images/planteamiento-inicial.jpg'>
+        </p>
+        <div class='source'>Por: Juan Antonio Cobo Zamora</div>
+      </article>
+      
+      <article>
+        <h3>Desarrollo sencillo y colaborativo</h3>
+        <p>Para esto hemos usado exhaustivamente tres herramientas</p>
+        <ul>
+        <li>SQL Developer, tanto para SQL como para el modelo relacional
+        <li>DIA para los modelos E/R
+        <li>Mail (gmail) para comunicación y debates
+        </ul>
+        <br>
+        <p class='yellow-background' style='margin-top:0'>
+          El debate ha sido parte importante del trabajo, el acumulado
+          de los correos han dado como resultado un documento de más
+          de 50 páginas (sin repeticiones) a partir de más de 80 correos
+        </p>
+      </article>
+      
+      <article>
+        <h3>El cliente lleva la razón...</h3>
+        <p>Pero lo que hay tras bastidores es parte fundamental en
+          el diseño de bases de datos. Por tanto se ha dado mucha importancia
+          al diseño y a las diferentes opciones posible, siguiendo los principios</p>
+        <ul>
+        <li>El modelo debe lo más adaptable posible
+        <li>El modelo debe ser lo más sencillo posible
+        <li>Debe de debatirse cada opción y ver los pros y los contras
+        </ul>
+        <ul class='build'>
+        <li class='yellow-background'>Se ha considerado, en la medida de lo posible, usar algunas herramientas
+          especificas de Oracle como campos compuestos, trabajos o funciones internas
+        </ul>
+      </article>
+      
+      
+      <article>
+        <h3>Contenido de la presentación</h3>
+        <p>El contenido de la presentación se ha dividido en cuatro apartados</p>
+        <ol>
+        <li>Modelo E/R <small>- describe las decisiones tomadas a 
+          partir de los requisitos</small>
+        <li>Modelo Relacional <small>- destaca las transformaciones 
+          realizadas desde E/R</small>
+        <li>Modelo Físico <small>- muestra las partes destacadas de 
+          la implementación en Oracle</small>
+        <li>Minería de datos <small>- describes aquellas vistas o 
+          métodos que extraen información</small> del modelo generado
+        </ol>
+      </article>
+      
+      <article class='fill'>
+        <h3>
+          Modelo Entidad Relación<small>, visión abstracta del problema</small>
+        </h3>
+        <p>
+          <img src='images/modelo-er.jpg'>
+        </p>
+        <div class='source'>Por: Juan Antonio Cobo Zamora</div>
+      </article>
+      
+      <article>
+        <h3>Relaciones y Entidades principales</h3>
+        <p>
+          <img style='width: 700px' src='images/diagrama-er-simple.svg' class='centered'>
+        </p>
+        <p>
+        	Destacar la cardinalidad mínima 0 generalizada, especialmente la
+            de producto hacia departamento
+            <!-- 
+            En general min=0 es más comodo de adiministrar, en el
+            caso de producto -> departamento lo expicaria con ejemplo:
+            Si un becario le dice el jefe que meta mil productos este becario
+            lo ultimo que quiere es rayarse pensando donde va cada producto
+            en cada departamento, asi que si le surgen dudas pone departamento
+            null. Luego solo tiene que hacer un select a los que tienen
+            null y poner el departamento.
+            
+            En caso contrario, no poder poner null, cardinalidad minima 1; es
+            una putada ya que el sistema te fuerza a poner un departamento
+            y por este hecho de forzar podrian un usuario meter un departamento
+            erroneo solo para que no falle.
+            -->
+        </p>
+      </article> 
+      
+      <article>
+        <h3>E/R Decisión I - <code>Ofertas</code> ¿entidad o relación?</h3>
+        <p>
+          <img style='width: 730px' src='images/diagrama-er-decision-ofertas.svg' class="centered">
+        </p>
+        <ul>
+        	<li>oferta relaciona un producto con un proveedor</li>
+           	<li>pero puede haber varias ofertas para el mismo proveedor producto</li>
+            <li>la conclusión fue que A representaba mejor la relación oferta pero
+            B nos muestra una aproximación al modelo relacional usado</li>
+        </ul>
+      </article>
+      
+      <article>
+        <h3>E/R Decisión II - <code>Caja</code> ¿atributo o entidad?</h3>
+        <p>
+          <img style='width: 650px' src='images/diagrama-er-decision-caja.svg' class="centered">
+        </p>
+      </article>
+      
+      <article>
+        <h3>E/R Entidad <code>Departamentos</code></h3>
+        <p>
+          <img style='width: 650px' src='images/diagrama-er-departamento.svg' class="centered">
+        </p>
+        <ul>
+        	<li>presupuesto es un multivaluado para cada ejercicio</li>
+           	<li>tanto nombre como id son claves únicas</li>
+            <li>un departamento puede ser de tipo interno, publico o ambos</li>
+        </ul>
+        <!-- 
+            no dedicar mucho tiempo! es trivial, como mucho
+            comentar que vende no esta relacionado con publico
+            porque se considera una limitación no explicita del enunciado
+            y por tanto se ha considerado mejor hacerla depender
+            de departamento
+            
+            publico significa: venta al publico
+            interno significa: departamento gestion interna
+        -->
+      </article>
+      
+      <article>
+        <h3>E/R Entidades <code>Producto</code> y <code>Proveedor</code></h3>
+        <p>
+          <img style='width: 700px' src='images/diagrama-er-producto-proveedor.svg' class="centered">
+        </p>
+        <ul>
+        	<li>producto contiene al almacén, representado por stock</li>
+           	<li>producto y proveedor se relacionan a través de oferta</li>
+            <li>un producto puede no pertenecer a ningún departamento</li>
+        </ul>
+        <!-- 
+        explicar porque puede no pertenecer a un departamento; lo mismo que 
+        en la general de q es mas comodo de gestionar y no implica problemas
+        
+        no entrar en la relacion producto-proveedor q se explica luego
+        -->
+      </article> 
+      
+      <article>
+        <h3>E/R Entidades <code>Venta</code> y <code>Caja</code></h3>
+        <img style='width:700px' src='images/diagrama-er-venta-caja.svg' class='centered'>
+        <ul>
+        	<li>venta es débil respecto a caja</li>
+           	<li>importe total y forma de pago son derivados</li>
+            <!-- es decir se calculan no se almacenan, aunq luego en el modelo 
+            relacional importe-total no es derivado porq calcularlo es mejor -->
+            <li>fecha hora es clave parcial junto a caja</li>
+            <!-- decir que lo importante es que no haya ventas en paralelo para la misma caja -->
+            <li>la relación lista productos hace de histórico de precios</li>
+            <!-- ya que se considera q el precio de un producto que no se ha vendido nunca no es
+            relevante, en cualquier caso, si el cliente quisiese almacenar el historico de
+            precios de productos no vendidos, se podrían hacer ventas con 0 en cantidad, de forma
+            que se almacene el precio pero no afecte a contabilidad. -->
+        </ul>
+      </article> 
+      
+      <article>
+        <h3>E/R Entidades <code>Oferta</code> y <code>Pedido</code></h3>
+        <img style='width:700px' src='images/diagrama-er-oferta-pedido.svg' class='centered'>
+        <ul>
+        	<li>pedido queda identificado por el subrogado id</li>
+            <li>oferta es una entidad débil respecto a productos y proveedores</li>
+            <li>oferta tiene una clave parcial id ya que puede haber más de una oferta
+            para cada pareja producto proveedor</li>
+        </ul>
+      </article> 
+      
+      <article>
+        <h3>E/R Diagrama resultado</h3>
+        <p>
+          <img style='width: 880px; margin-left:-50px' src='images/diagrama-er-final.svg'>
+        </p>
+      </article>
+      
+      <article class='fill'>
+        <h3>
+          Modelo Relacional<small>, entrando en profundidad</small>
+        </h3>
+        <p>
+          <img src='images/modelo-relacional.jpg'>
+        </p>
+        <div class='source'>Por: Ignacio Baca Moreno-Torres</div>
+      </article>
+      
+      <article>
+        <h3>Decisión sobre claves y relaciones</h3>
+        <p>
+          El modelo ER las relaciones involucraban claves compuestas, pero
+          se ha considerado usar claves subrogadas por varios motivos
+        </p>
+        <ul class='build' style='margin-top:8px'>
+          <li>
+            Permite mas <b>versatilidad</b>, e. g. proveedor tiene como clave el CIF, pero
+            este podría no saberse por parte del usuario
+          </li>
+          <li>
+            Es más <b>consistente</b> e. g.  venta se identifica por las claves parciales
+            caja y fecha, pero fecha es un valor dependiente de la implementación, si fecha
+            tiene precisión de día solo se podría almacenar una venta al día
+          </li>
+          <li>
+          	Es más <b>sencillo</b> e. g. pedidos se relaciona con ofertas, si no se usase
+            cave foránea deberían heredarse las tres claves parciales
+            </li>
+        </ul>
+      </article>    
+      
+      <article>
+        <h3>Decisión sobre tipo de departamento</h3>
+        <p>
+          Dada la falta de utilidad que se extrae del enunciado, se ha optado
+          por almacenar el tipo en un <b>único campo</b> como una <b>colección</b> de valores.
+        </p>
+        <p>
+          Esta solución permite definir un departamento de uno o varios tipos, además de
+          poder añadir nuevos tipos de departamentos.
+        <p>
+          Más adelante se detalla como se ha llevado a cabo este campo colección.
+        </p>
+      </article> 
+      
+      <article>
+        <h3>Implicaciones del proceso compra en entidad <code>venta</code></h3>
+        <p>
+          El proceso de compra establece que no se pueden realizar simultáneamente dos o
+          mas compras a través de la misma caja.
+        </p>
+        <p>
+          Se ha solucionado a través de una restricción y del nuevo campo añadido en el
+          modelo relacional <code>ventas.activa</code>
+        </p>
+        <p>
+          Además se ha creado una vista <code>ventas activas</code> que facilita
+          el proceso de compra de productos
+        </p>
+        <div class='build' style='margin-top:30px'>
+        <p class='yellow-background'>
+          Aunque el cliente pide de forma clara que no se puedan realizar
+          compras simultaneas en la misma caja, se ha realizado el modelo
+          considerado que esta restricción pueda ser retractada por el cliente 
+        </p>
+        </div>
+      </article> 
+      
+      <article>
+        <h3>Traducción de la entidad <code>caja</code> al modelo relacional</h3>
+        <p>
+          Dado que caja no contiene ningún atributo más que su identificador se ha
+          optado por no crear una tabla en el modelo relacional
+        </p>
+        <p>
+          Para ser consistentes con el modelo E/R se ha optado por crear una vista
+          que represente todas las cajas que se han identificado en alguna venta
+        </p>
+        <p>
+          La vista por tanto representa el conjunto de identificadores de cajas
+          sin ningún otro atributo
+        </p>
+      </article> 
+      
+      <article>
+        <h3>Traducción del atributo <code>departamentos.presupuesto</code> al modelo relacional</h3>
+        <p>
+          El atributo presupuesto esta formado por información del presupuesto
+          del departamento <b>para cada ejercicio</b>
+        </p>
+        <p>
+          La traducción ha consistido en transformarlo en una tabla con clave principal
+          formada por el departamento y el ejercicio
+        </p>
+      </article> 
+           
+      <article>
+        <h3>Diagrama relacional resultado</h3>
+        <p>
+          <img style='width:100%' src='images/diagrama-relacional-final.png'>
+        </p>
+        <!-- 
+          Destacar que todos usan claves foranes execptuando
+          * productos que en realidad es el codigo de 13 digitos q se describe en el enunciado
+          * presupuestos que en la traducción del atributo se considero no usar foranea
+          * venta_lista_productos porq no tiene sentido ya q es una tabla para unir otras 2
+        -->
+      </article>
+      
+      <article class='fill'>
+        <h3>
+          Modelo Físico<small>, implementación en Oracle 11g</small>
+        </h3>
+        <p>
+          <img src='images/modelo-fisico.jpg'>
+        </p>
+        <div class='source'>Por: Ignacio Baca Moreno-Torres</div>
+      </article>
+      
+       <article>
+        <h3>Decisiones generales - nomenclatura</h3>
+        <p>
+          Se ha establecido una nomenclatura general para las entidades del esquema
+          <ul>
+          <li>Nombres de tablas en plural
+          <li>Nombres de atributos en singular
+          <li>Todas las entidades en minúsculas y separadas por <code>_</code>
+          <li>Índices <code>nombretabla_nombreatributo_tipoindice</code> 
+            (único <code>un</code>, primario <code>pk</code> o índice <code>idx</code>)
+          <li>Disparadores terminados en <code>trg</code>
+          <li>En bloques los argumentos comienzan por <code>a_</code>, 
+          	los parámetros por <code>p_</code> y los cursores por <code>cur_</code>
+          </ul>
+        </p>
+      </article> 
+      
+      <article>
+        <h3>Decisiones generales - atributos</h3>
+        <p>
+          El modelo físico se ha implementado intentando que sea lo mas cómodo
+          para el cliente. Es decir, siempre que un <b>campo no es critico o es deducible</b>
+          se a optado por rellenarlo de forma que los insert sean rechazados por falta de
+          información en el menor numero de situaciones          
+        </p>
+        <p>
+          Destacando la <b>generación automática</b> en
+          <ul style='margin-top:5px' class='build'>
+          <li>Las claves únicas subrogadas de ofertas, pedidos y ventas se generan automáticamente
+            a través de secuencias
+          <li>Los campos fecha_hora relacionados con la fecha de creación, como en venta o pedidos
+            son incluidos automáticamente
+          <li>Atributos* numéricos inicializados a <code>0</code>
+          </ul>
+        </p>
+      </article> 
+
+      <article>
+        <h3>Implementación del atributo compuesto tipo</h3>
+        <p>
+          Se ha definido un tipo <code>departamento_tipos</code> como tabla
+          <pre>
+CREATE OR REPLACE TYPE departamento_tipos 
+    IS TABLE OF VARCHAR2 (45);</pre>
+        </p>
+        <p>
+          Y se ha añadido como campo atributo <code>tipo</code>
+          <pre>
+CREATE TABLE departamentos 
+    (... , tipo departamento_tipos , ...) 
+    NESTED TABLE tipo STORE AS departamentos_tipos ;</pre>
+        </p>
+        <p class='yellow-background'><small>En <code>NESTED TABLE</code> se indica
+            donde almacenar la colección de tipos, es decir, se crea tabla 
+            <code>departamentos_tipos</code></small>
+        </p>
+      </article> 
+      
+      <article>
+        <h3>Índices</h3>
+        <p>
+          No se ha generado ningún índice de adicional
+        </p>
+        <p>
+          Es decir, solo hay índices para claves primaría, únicas y foráneas.
+        </p>
+        <p>
+          Únicamente los índices descritos requieren 13 índices y
+          2 más generados automáticamente para la gestión del atributo especial 
+          <code>departamento_tipos</code>, 
+          lo que da como resultado un <b>total</b> de <code>15 índices</code>
+        </p>
+        <div class='build' style='margin-top:25px'>
+        <p class='yellow-background'>
+          Se ha observado que podría ser interesante generar algún <b>índice 
+          sobre atributos fecha</b>
+          muy usados en consultas, pero se ha considerado fuera del alcance del proyecto
+        </p>
+        </div>
+      </article> 
+      
+       <article class='fill'>
+        <h3>
+          Procedimientos y disparadores<small>, engranajes del modelo físico</small>
+        </h3>
+        <p>
+          <img src='images/engranajes.jpg'>
+        </p>
+        <div class='source'>Por: Ignacio Baca Moreno-Torres</div>
+      </article>
+      
+      <article>
+        <h3>El problema de las ventas</h3>
+        <p>
+          Las ventas se pueden llevar a cabo a partir de
+          <ul style='margin-top:8px'>
+            <li>Identificador de caja
+			<li>Identificador de ventas
+          </ul>
+        </p>
+        <div class='build'>
+        <div>
+          <p>
+          Se han implementado dos formas de realizar una venta
+          </p>
+          <ul style='margin-top:8px'>
+        	<li>A través procedimientos<br>Basada en identificador de caja
+            <li>A través de vistas<br>Basada en el identificador de venta
+          </ul>
+        </div>
+        <p class='yellow-background'>
+          Únicamente se ha implementado la parte de compra de productos
+          para ambas formas de identificación
+        </p>
+        </div>
+        <!-- volver a destacar que el sistema basado en id de ventas es mas versatil!!
+        por ejemplo una caja podría tener varias ventas en curso de forma paralela!! -->
+      </article> 
+      
+      <article>
+        <h3>Ventas a través del identificador de caja</h3>
+        <p>
+          Realizada usando los procedimientos
+        </p>
+        <ul style='margin-top:8px'>
+          <li><code>inicia_compra(caja_id)</code>
+		  <li><code>compra_producto(caja_id,producto_id,cantidad)</code>
+          <li><code>finaliza_compra(caja_id)</code>
+        </ul>
+        <p>
+          Los tres procedimientos lo primero que hacen es obtener el id de venta, esto
+          implica también validar que hay venta y que está activa
+        </p>
+        <p>
+          Además durante el proceso de compra, se podrá calcular el importe
+          a través de la función
+        </p>
+         <ul style='margin-top:8px'>
+          <li><code>NUMBER total_compra(caja_id)</code>
+        </ul>
+      </article>
+      
+       <article>
+        <h3>Ventas a través del id de caja - inicia compra</h3>
+        <ul>
+          <li>Se ha optado por un método optimista para la compra de productos
+          <!-- es decir no se restan las existencias hasta finalizar -->
+          <li>Esto implica que reiniciar la compra solo requiere borrar lista productos
+        </ul>
+        <pre>
+IF flag = 0
+THEN
+  INSERT INTO ventas (caja_id,activa) VALUES (a_caja_id,'s'); 
+ELSE
+  DELETE FROM venta_lista_productos WHERE venta_id = (
+    SELECT ID FROM ventas 
+    WHERE caja_id = a_caja_id AND activa IS NOT NULL );
+  UPDATE ventas SET fecha_hora = SYSDATE;
+END IF;</pre>
+      </article>
+      
+      <article>
+        <h3>Ventas a través del id de caja - compra producto</h3>
+        <ul>
+          <li>Se acumulan las compras del mismo producto
+          <li>Si no estuviese el producto se incluye
+          <li>Se realizan otras validaciones como si existe el producto
+            o hay existencias para la cantidad pasada
+        </ul>
+        <pre>
+-- Intentamos acumular la cantidad
+UPDATE venta_lista_productos l 
+  SET l.cantidad = nvl(l.cantidad,0) + p_cantidad, l.pvp = p_pvp
+  WHERE l.venta_id = p_venta_id AND l.producto_id = p_producto_id;
+-- Si todavia no esta el producto en la lista se incluye
+IF SQL%NOTFOUND THEN 
+  INSERT INTO venta_lista_productos (venta_id, producto_id, cantidad, pvp) 
+  VALUES (p_venta_id, p_producto_id, p_cantidad, p_pvp);
+END IF;</pre>
+      </article>
+      
+      <article>
+        <h3>Ventas a través del id de caja - finaliza compra</h3>
+        <ul>
+          <li>Se valida que haya existencias suficientes
+          <li>Se calcula el importe total
+          <li>Se marca la venta como no activa
+        </ul>
+        <pre style='margin-top:8px'>
+-- Se actualizan las existencias de productos
+FOR l IN cur_lista_productos loop
+  BEGIN
+    UPDATE productos p 
+      SET p.existencias_num = p.existencias_num - l.cantidad
+      WHERE p.ID = l.producto_id AND p.existencias_num >= l.cantidad;
+    p_importe_total := p_importe_total + (l.pvp * l.cantidad);
+  EXCEPTION WHEN NO_DATA_FOUND THEN
+    raise_application_error(-20000, 'no se ha encontrado producto o no hay existencias.');
+  END;
+END loop;</pre>
+      </article>
+      
+      <article>
+        <h3>Ventas a través del id de venta</h3>
+        <p>Únicamente se ha implementado el proceso de comprar producto
+        <ul>
+          <li>Se realiza a través de una vista
+          <li>La vista solo contiene datos de ventas activas
+          <li>Se usa un trigger <code>INSTEAD OF INSERT</code>
+          <li>Si no esta el producto en la lista se incluye
+          <li>Si esta y el resultado es <> de 0 se actualiza
+          <li>Si el resultado es 0 se borra de la lista
+        </ul>
+      </article>
+      
+      <article>
+        <h3>Gestión del almacen</h3>
+        <p>La gestión del almacén se realiza de forma similar tanto para existencias
+         como para stock
+         </p>
+         <p>
+         <img style='width: 700px' src='images/diagrama-flujo-sync.svg' class="centered">
+         </p>
+        <div class='build'>
+        <p>Pero se ha considerado que ligar el proceso del almacén al proceso de venta
+          no era adecuado
+        </p>
+        <p>
+          <img style='width: 700px' src='images/diagrama-flujo-async.svg' class="centered">
+        </p>
+        </div>
+      </article>
+      
+      <article>
+        <h3>Gestión del almacen - proceso asíncrono</h3>
+        <p>Para realizar este proceso asíncrono se ha usado el comando
+        <code>dbms_job.submit</code> que permite lanzar procesos
+        </p>
+        <pre>
+create or replace
+TRIGGER "PRODUCTOS_EXISTENCIAS_TRG" 
+AFTER UPDATE OF existencias_num, existencias_min ON productos 
+FOR EACH ROW
+  WHEN (NEW.existencias_num < NEW.existencias_min) DECLARE
+p_job NUMBER;
+BEGIN
+  dbms_job.submit (p_job, 'BEGIN productos_update_existencias('||:NEW.ID||'); END;');
+  dbms_output.put_line('delegada actualizacion existencias al job '||p_job);  
+END;</pre>
+      </article>
+      
+      <article>
+        <h3>Gestión del almacen - proceso de actualización</h3>
+        <p>El proceso más interesantes es el de actualización de stock</p>
+        <pre style='margin-top:14px'>
+-- calculo de mejor oferta
+mejor_oferta(
+  a_producto_id => a_producto_id,
+  a_oferta_id => r_oferta_id,
+  a_oferta_cantidad => r_oferta_cantidad
+);
+-- realizacion del pedido
+INSERT INTO pedidos (oferta_id,cantidad)
+VALUES (r_oferta_id, r_oferta_cantidad);
+-- se incluye en el almacen (supuestamente hay q esperar)
+UPDATE productos SET stock_num = stock_num + r_oferta_cantidad;
+-- se acutalizan existencias si fuese necesario
+productos_update_existencias(
+  a_producto_id => a_producto_id
+);</pre>
+      </article>
+      
+      <article class='nobackground'>
+        <h3>Gestión del almacen - calculo de la mejor oferta</h3>
+        <iframe src='mejor-oferta.html'></iframe>
+      </article>
+      
+      <article>
+        <h3>El calculo de presupuestos</h3>
+        <p>Se ha creado un procedimiento de utilidad para gestionar los presupuestos</p>
+        <ul style='margin-top:8px'>
+        <li>tiene un único parametro opcional <code>fecha</code>
+        <li>si es <code>null</code> se actualizan los presupuestos de todo el año
+        <li>si es un <code>date</code> se acumula al presupuesto el día pasado
+        <li>los presupuestos son acumulados independientemente por ingresos y por gastos
+        </ul>
+        <div class='yellow-background'>
+          <ul>
+          <li><small>Actualizar presupuestos para cada venta o pedido es mala idea</small>
+          <li><small>Se considera que es buena opción el calculo diario</small>
+          <li><small>En caso de corrupción del acumulado se puede recalcular</small>
+        </div>
+       
+      </article>
+      
+      <article class='fill'>
+        <h3>
+          Minería de datos<small>, rizando el rizo</small>
+        </h3>
+        <p>
+          <img src='images/mineria.jpg'>
+        </p>
+        <div class='source'>Por: Jesus S. Barriga Antonio</div>
+      </article>
+      
+      <article class='nobackground'>
+        <h3>Consulta beneficios anuales</h3>
+        <iframe src='beneficio-anyo.html'></iframe>
+      </article>
+      
+       <article class='nobackground'>
+        <h3>Consulta beneficios anuales - demostración</h3>
+        <iframe src='beneficio-anyo-demo.html'></iframe>
+      </article>
+      
+      <article class='nobackground'>
+        <h3>Consulta producto más vendido</h3>
+        <iframe src='producto-mas-vendido.html'></iframe>
+      </article>
+      
+       <article class='nobackground'>
+        <h3>Consulta producto más vendido - demostración</h3>
+        <iframe src='producto-mas-vendido-demo.html'></iframe>
+      </article>
+      
+      <article class='nobackground'>
+        <h3>Consulta producto frecuencia</h3>
+        <iframe src='producto-frecuencia.html'></iframe>
+      </article>
+      
+      <article class='nobackground'>
+        <h3>Consulta producto frecuencia - demostración</h3>
+        <iframe src='producto-frecuencia-demo.html'></iframe>
+      </article>
+      
+      <article class='nobackground'>
+        <h3>Consulta puntos de inflexión</h3>
+        <iframe src='puntos-inflexion.html'></iframe>
+      </article>
+      
+      <article class='nobackground'>
+        <h3>Consulta puntos de inflexión - demostración</h3>
+        <iframe src='puntos-inflexion-demo.html'></iframe>
+      </article>
+      
+      <article class='fill'>
+        <h3>
+          Conclusiones<small> y dudas</small>
+        </h3>
+        <p>
+          <img src='images/conclusiones.jpg'>
+        </p>
+        <div class='source'>Por: Jesus S. Barriga Antonio</div>
+      </article>
+      
+      <article>
+        <h3>
+          Conclusiones I
+        </h3>
+        <ul>
+          <li>El modelo E/R y su posterior traducción al modelo 
+            relacional, posibilita el desarrollo de sistemas más
+            robustos y adaptables, permitiendo la rápida 
+            identificación de problemas en las propuestas iniciales 
+            que en una implementación directa del modelo físico 
+            conllevarían mayores retrasos y complejidades 
+          <li>La búsqueda de la solución más sencilla posible, 
+            tanto en el modelo como en su realización física, facilita 
+            su comprensión y facilidad de adaptación a nuevos requerimientos
+        </ul>
+      </article>
+      
+      <article>
+        <h3>
+          Conclusiones II
+        </h3>
+        <ul>
+          <li>El trabajo cooperativo de los miembros del equipo y el 
+            debate sobre las distintas alternativas, posibilita un 
+            modelado de la solución más rico y flexible
+          <li>Herramientas de desarrollo como SQL Developer 
+            posibilitan la realización rápida del modelo físico 
+            del sistema y la prueba del mismo.
+        </ul>
+      </article>
+      
+      <article>
+        <h3>
+          Dudas
+        </h3>
+        <p style='margin-top:0'>
+          <img style='width: 600px' src='images/dudas.jpg' class="centered">
+        </p>
+      </article>
+      
+      <article class='fill'>
+        <h3>
+          Gracias!
+        </h3>
+        <p>
+          <img src='images/final.jpg'>
+        </p>
+      </article>
+      
+    </section>
+
+  </body>
+</html>

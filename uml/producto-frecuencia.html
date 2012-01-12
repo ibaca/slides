@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>producto frecuencia sql</title>
+</head>
+
+<body style='font-size:20px'>
+<pre style='color:#000000;background:#ffffff;'><span style='color:#7f0055; font-weight:bold; '>SELECT</span> producto_a, producto_b, 
+  (ventas_ab / ventas_a) <span style='color:#7f0055; font-weight:bold; '>AS</span> frecuencia
+<span style='color:#7f0055; font-weight:bold; '>FROM</span>
+    (<span style='color:#7f0055; font-weight:bold; '>SELECT</span> <span style='color:#7f0055; font-weight:bold; '>A</span>.<span style='color:#7f0055; font-weight:bold; '>ID</span> <span style='color:#7f0055; font-weight:bold; '>AS</span> producto_a, <span style="color:#7f0055; font-weight:bold;">B</span>.<span style='color:#7f0055; font-weight:bold; '>ID</span> <span style='color:#7f0055; font-weight:bold; '>AS</span> producto_b,
+      
+     (<span style='color:#7f0055; font-weight:bold; '>SELECT</span> <span style='color:#7f0055; font-weight:bold; '>COUNT</span>(*) <span style='color:#7f0055; font-weight:bold; '>AS</span> ventas_ab
+    <span style='color:#7f0055; font-weight:bold; '>  FROM</span> venta_lista_productos x
+    <span style='color:#7f0055; font-weight:bold; '>  WHERE</span> producto_id = <span style='color:#7f0055; font-weight:bold; '>A</span>.<span style='color:#7f0055; font-weight:bold; '>ID</span>
+    <span style='color:#7f0055; font-weight:bold; '>  AND</span> <span style='color:#7f0055; font-weight:bold; '>EXISTS</span>
+        (<span style='color:#7f0055; font-weight:bold; '>SELECT</span> producto_id
+      <span style='color:#7f0055; font-weight:bold; '>  FROM</span> venta_lista_productos
+      <span style='color:#7f0055; font-weight:bold; '>  WHERE</span> producto_id = b.<span style='color:#7f0055; font-weight:bold; '>ID</span>
+        <span style='color:#7f0055; font-weight:bold; '>AND</span> venta_id      = x.venta_id )
+      ) <span style='color:#7f0055; font-weight:bold; '>AS</span> ventas_ab,
+      (<span style='color:#7f0055; font-weight:bold; '>SELECT</span> <span style='color:#7f0055; font-weight:bold; '>COUNT</span>(*) <span style='color:#7f0055; font-weight:bold; '>AS</span> ventas_a
+      <span style='color:#7f0055; font-weight:bold; '>FROM</span> venta_lista_productos
+      <span style='color:#7f0055; font-weight:bold; '>WHERE</span> producto_id = <span style='color:#7f0055; font-weight:bold; '>A</span>.<span style='color:#7f0055; font-weight:bold; '>ID</span>
+      ) <span style='color:#7f0055; font-weight:bold; '>AS</span> ventas_a
+    
+    <span style='color:#7f0055; font-weight:bold; '>FROM</span> productos <span style='color:#7f0055; font-weight:bold; '>A</span>, productos <span style="color:#7f0055; font-weight:bold;">B</span>
+    <span style='color:#7f0055; font-weight:bold; '>WHERE</span> <span style='color:#7f0055; font-weight:bold; '>A</span>.<span style='color:#7f0055; font-weight:bold; '>ID</span> &lt;> <span style="color:#7f0055; font-weight:bold; ">B</span>.<span style='color:#7f0055; font-weight:bold; '>ID</span> )
+<span style='color:#7f0055; font-weight:bold; '>WHERE</span> ventas_a &lt;> 0;
+</pre>
+</body>
+</html>
