@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="26cm" height="7cm" viewBox="171 90 512 129" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffebdf" x="172.9" y="94.85" width="509" height="123.15" rx="4" ry="4"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="172.9" y="94.85" width="509" height="123.15" rx="4" ry="4"/>
+  </g>
+  <g>
+    <ellipse style="fill: #ffffff" cx="502.35" cy="109.1" rx="6" ry="6"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" cx="502.35" cy="109.1" rx="6" ry="6"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="478.35" y1="121.1" x2="526.35" y2="121.1"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="502.35" y1="115.1" x2="502.35" y2="145.1"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="502.35" y1="145.1" x2="478.35" y2="171.1"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="502.35" y1="145.1" x2="526.35" y2="171.1"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="502.35" y="195.9">
+      <tspan x="502.35" y="195.9">Tecnico</tspan>
+      <tspan x="502.35" y="211.9">Sistemas</tspan>
+    </text>
+  </g>
+  <g>
+    <ellipse style="fill: #ffffff" cx="227.35" cy="109.1" rx="6" ry="6"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" cx="227.35" cy="109.1" rx="6" ry="6"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="203.35" y1="121.1" x2="251.35" y2="121.1"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="227.35" y1="115.1" x2="227.35" y2="145.1"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="227.35" y1="145.1" x2="203.35" y2="171.1"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="227.35" y1="145.1" x2="251.35" y2="171.1"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="227.35" y="195.9">
+      <tspan x="227.35" y="195.9">Tecnico</tspan>
+      <tspan x="227.35" y="211.9">Control</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="265.586" y1="145.1" x2="476.351" y2="145.1"/>
+    <polygon style="fill: #ffffff" points="265.586,140.1 255.586,145.1 265.586,150.1 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="265.586,140.1 255.586,145.1 265.586,150.1 "/>
+  </g>
+</svg>

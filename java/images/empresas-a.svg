@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="26cm" height="7cm" viewBox="171 90 512 129" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffebdf" x="172.9" y="94.85" width="509" height="123.15" rx="4" ry="4"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="172.9" y="94.85" width="509" height="123.15" rx="4" ry="4"/>
+  </g>
+  <g>
+    <ellipse style="fill: #ffffff" cx="224.45" cy="109.1" rx="6" ry="6"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" cx="224.45" cy="109.1" rx="6" ry="6"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="200.45" y1="121.1" x2="248.45" y2="121.1"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="224.45" y1="115.1" x2="224.45" y2="145.1"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="224.45" y1="145.1" x2="200.45" y2="171.1"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="224.45" y1="145.1" x2="248.45" y2="171.1"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="224.45" y="195.9">
+      <tspan x="224.45" y="195.9">Empresa Externa</tspan>
+      <tspan x="224.45" y="211.9">Suministradora</tspan>
+    </text>
+  </g>
+  <g>
+    <ellipse style="fill: #ffffff" cx="504.617" cy="109.1" rx="6" ry="6"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" cx="504.617" cy="109.1" rx="6" ry="6"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="480.617" y1="121.1" x2="528.617" y2="121.1"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="504.617" y1="115.1" x2="504.617" y2="145.1"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="504.617" y1="145.1" x2="480.617" y2="171.1"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="504.617" y1="145.1" x2="528.617" y2="171.1"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="504.617" y="195.9">
+      <tspan x="504.617" y="195.9">Empresa Externa</tspan>
+      <tspan x="504.617" y="211.9">Consumidora</tspan>
+    </text>
+  </g>
+  <g>
+    <ellipse style="fill: #ffffff" cx="364.534" cy="116.325" rx="6" ry="6"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" cx="364.534" cy="116.325" rx="6" ry="6"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="340.534" y1="128.325" x2="388.534" y2="128.325"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="364.534" y1="122.325" x2="364.534" y2="152.325"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="364.534" y1="152.325" x2="340.534" y2="178.325"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="364.534" y1="152.325" x2="388.534" y2="178.325"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="364.534" y="203.125">
+      <tspan x="364.534" y="203.125">Empresa Externa</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="304.391" y1="149.223" x2="272.373" y2="147.572"/>
+    <polygon style="fill: #ffffff" points="304.133,154.216 314.378,149.738 304.648,144.23 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="304.133,154.216 314.378,149.738 304.648,144.23 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="424.676" y1="149.223" x2="456.694" y2="147.572"/>
+    <polygon style="fill: #ffffff" points="424.419,144.23 414.69,149.738 424.934,154.216 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="424.419,144.23 414.69,149.738 424.934,154.216 "/>
+  </g>
+  <g>
+    <ellipse style="fill: #ffffff" cx="630.276" cy="109.1" rx="6" ry="6"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="630.276" cy="109.1" rx="6" ry="6"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="606.276" y1="121.1" x2="654.276" y2="121.1"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="630.276" y1="115.1" x2="630.276" y2="145.1"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="630.276" y1="145.1" x2="606.276" y2="171.1"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="630.276" y1="145.1" x2="654.276" y2="171.1"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="630.276" y="195.9">
+      <tspan x="630.276" y="195.9">Cliente</tspan>
+      <tspan x="630.276" y="211.9">Consumidor</tspan>
+    </text>
+  </g>
+</svg>

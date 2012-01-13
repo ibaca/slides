@@ -1,0 +1,196 @@
+<article class='fill'>
+  <h3>Cliente mó;vil</h3>
+  <p>
+    <img src='images/fondoPresentacionAndroid.jpg'>
+  </p>
+  <div class='source'>Por: Alberto Mateos Checa</div>
+</article>
+
+<article>
+  	<h3>
+    Estructura de paquetes
+  	</h3>
+  
+    <ul>
+		<li>Tendencia: ordenar las clases por pantallas o según donde se usen en la aplicación</li> 
+		<li>Consecuencia: código no reusable</li>
+		<div class="build"><li><b>Solución:</b> agrupar las clases según su funcionalidad</li></div>
+	</ul>
+
+<div class="build">
+	<center><img src="images/paquetesAndroid.png"/></center>
+	</div>
+</article>
+
+<article>
+  	<h3>
+  	MVC: Android vs JRE
+  	</h3>
+    <ul>
+		<li>No existe método Main</li> 
+		<li>No está implementado el patrón Observer</li>
+		<li>Definición de los elementos de la UI mediante XML</li>
+	</ul>
+</article>
+
+<article>
+  	<h3>
+  	MVC: Modelo
+  	</h3>
+	<p>Uso de 3 modelos: hotspots, sesiones y perfil.</p><br> 
+	<b>Hotspots</b>
+		<ul>
+			<li>ArrayList&lt;Spot&gt; (nombre, descripción, número de surfers actuales y totales, longitud, latitud, url de imagen)</li>
+		</ul>
+	<b>Sesiones</b>
+		<ul><li>ArrayList&lt;Session&gt; (spot, fecha inicio, fecha fin)</li></ul>	
+	<b>Perfil</b>
+		<ul>
+			<li>DisplayName</li>
+			<li>FullName</li>
+			<li>GravatarHash</li>
+		</ul>
+</article>
+
+<article>
+	<h3>MVC: Modelo</h3>
+	<center><img src="images/flujoModelos.svg" width="750" height="500"></center>
+</article>
+
+<article>
+  	<h3>
+  	MVC: Modelo
+  	</h3>
+	<h5>Características</h5> 
+	<ul>
+		<li>Serializable: permite almacenar el estado en caso de cerrar la aplicación y es necesario para el paso de modelos entre pantallas</li>
+		<li>Acceso sincronizado a los datos<br>
+			<pre>
+public String getDisplayName() {
+    synchronized (this) {
+        return displayName;
+    }
+}
+			</pre>
+		</li>
+	</ul>
+</article>
+
+<article>
+	<h3>MVC: Modelo</h3>
+	<ul>
+		<li>Notificación a la Vista de cambios en el modelo a través de listener implementado como inner interface<br>
+			<pre>
+public interface HotspotListener {
+	void onHotspotsUpdated(HotspotModel hotspotModel);
+}
+			</pre>
+		</li>
+		<li>El modelo contiene un array de listeners de notificación a la vista</li>
+	</ul>
+</article>
+
+<article>
+	<h3>MVC: Modelo</h3>
+	<ul>
+		<li>Cada cambio en el modelo se notifica mediante las funciones que se definen en la inner interfaz<br>
+				<pre>
+public void setHotspots(ArrayList&lt;Spot&gt; hotspots) {
+    synchronized (this) {
+        this.hotspots = hotspots;
+    }
+    // Se notifica a los listeners del cambio producido en el modelo
+    synchronized (listeners) {
+        for (HotspotListener listener : listeners) {
+            listener.onHotspotsUpdated(this);
+        }
+    }
+}
+				</pre>
+		</li>
+	</ul>	
+</article>
+
+<article>
+	<h3>MVC: Controlador</h3>
+	<ul>
+		<li>Contienen un objeto modelo como dato miembro</li>
+		<li>Definen funciones para recuperar datos del modelo o actualizarlo</li>
+	</ul>
+</article>
+
+<article>
+	<h3>MVC: Vista</h3>
+	<ul>
+		<li>Contienen como datos miembro un modelo y un controlador</li>
+		<li>Implementan la interfaz listener del modelo<br>
+			<pre>
+public void onHotspotsUpdated(HotspotModel hotspotModel) {
+    adapter.updateList(hotspotModel.getHotspots());
+    adapter.notifyDataSetChanged();
+
+}
+			</pre>
+		</li>
+	</ul>
+</article>
+
+<article>
+	<h3>MVC: Vista</h3>
+	<ul>
+		<li>Son registradas como listener en el modelo<br>
+			<pre>
+public void setModel(HotspotModel model) {
+
+    if (model == null) {
+        throw new NullPointerException("HotspotModel");
+    }
+
+    HotspotModel oldModel = this.hotspots;
+    if (oldModel != null) {
+        oldModel.removeListener(this);
+    }
+    this.hotspots = model;
+    this.hotspots.addListener(this);
+    this.controller = new HotspotController(this.hotspots);
+}
+			</pre>
+		</li>
+	</ul>
+</article>
+
+<article>
+	<h3>MVC: Vista</h3>
+	<br>
+	<center>
+		<img src="images/hotspotsActivity.png" width="220" height="396"/>
+		<img src="images/sesionesActivity.png" width="220" height="396"/>
+		<img src="images/perfilActivity.png" width="220" height="396"/>
+	</center>	
+</article>
+
+<article>
+	<h3>Patrones utilizados</h3>
+	<ul>
+		<li>Observer: MVC</li>
+		<li>Proxy: obtención de datos del servidor</li>
+		<li>Adapter: mostrado de datos en pantallas con lista (hotspots y sesiones)<br>
+			<pre>
+adapter = new HotspotArrayAdapter(activity, controller.getHotspots());
+setListAdapter(adapter);
+			</pre>
+		</li>
+	</ul>
+</article>
+
+<article>
+	<h3>Tareas asíncronas</h3>
+	<p>Objetivo: no congelar la UI</p>
+	<p>Uso de la clase AsyncTask</p>
+	<ul>
+		<li>Obtención y actualización de datos en el servidor</li>
+		<li>Descarga de la imagen de perfil desde Gravatar</li>
+	</ul>
+</article>
+
+

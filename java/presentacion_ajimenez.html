@@ -1,0 +1,179 @@
+<article>
+  	<h3>
+    Requisitos del Cliente Web
+  	</h3>
+  
+<div style="margin-top: 40px;"><center><img src="images/casos-uso-web.png"/></center>
+</div>	
+</article>
+<article>
+  	<h3>
+    Objetivos del Cliente Web
+  	</h3>
+  
+    <ul>
+		<li>Facilidad para añadir nueva funcionalidad.</li> 
+		<li>Facilidad para probar el modelo.</li>
+		<li>Facilidad de su mantenimiento.</li>		
+	</ul>
+<div class="build"><b>Necesidad de una buena arquitectura:</b> 
+<div style="margin-top: 30px;"><center><img src="images/paquetes-web.png"/></center>
+	</div>
+</div>	
+</article>
+<article>
+  	<h3>
+    Arquitectura del Cliente Web
+  	</h3>
+  
+<div><center><img src="images/arquitectura-web.png"/></center>
+	</div>
+</article>
+<article>
+  	<h3>
+    Patrón Factory
+  	</h3>
+<p>Guarda Instancias estáticas de objetos pesados:</p>
+<ul>
+		<li>Comunicación con el servidor.</li> 
+		<li>Bus de eventos.</li>
+		<li>Vistas.</li>		
+	</ul>
+<pre>
+public class ClientFactoryImpl implements ClientFactory {
+    /** Bus encargado de gestionar los distintos eventos de la aplicacion */
+    private static EventBus eventBus;
+    /** Vista encargada de mostrar el listados de playas */
+    private static PlayasListView playasListView;
+    /** Vista encargada de mostrar el perfil */
+    private static PerfilView perfilView;    
+    /** Objeto necesario para realizar la comunicacion con el servidor */
+    private static SocialwindRequestFactory swrf;    
+    /** Objeto necesario para realizar los cambios de actividad */
+    private static PlaceController placeController;
+</pre>
+</article>
+<article>
+  	<h3>
+    Patrón Activity/Place
+  	</h3>
+<p>Se encarga de realizar el cambio entre actividades. Una actividad es un componente MVP.</p>  
+<div class="build">
+<pre>
+@UiHandler("opIntro")
+void showPanelIntroduccion(ClickEvent event) {
+  clientFactory.getPlaceController().goTo(new IntroduccionPlace());
+}
+</pre>
+	</div>
+<div class="build">
+<pre>
+public Activity getActivity(Place place) {
+  if (place instanceof PlayasListPlace)
+    return new PlayasListActivity((PlayasListPlace) place, clientFactory, false);
+  else if (place instanceof PerfilPlace)
+    return new PerfilActivity((PerfilPlace) place, clientFactory);
+           .....
+}
+</pre>
+	</div>
+</article>
+<article>
+  	<h3>
+    Patrón Model-View-Presenter
+  	</h3>
+<p>Lleva a cabo la separación de responsabilidades.</p>  
+<div style="margin-top: 10px;"><strong>La parte Presenter:</strong></div>
+<ul>
+		<li>Se encarga de la lógica de negocio.</li>
+		<li>Se comunica con  el servidor para traer Proxys del modelo.</li> 
+		<li>Se comunica con la parte View para que pinte los componentes.</li>		
+	</ul>
+<div style="margin-top: 30px;"><strong>La parte View:</strong></div>
+<ul>
+		<li>Recibe ordenes del Presenter para pintar componentes gráficos.</li>
+		<li>Sólo se crea la primera vez.</li>
+</ul>
+</article>
+<article>
+  	<h3>
+    Patrón Model-View-Presenter
+  	</h3>
+<div style="margin-top: 10px;"><strong>La parte Model:</strong></div>
+<ul>
+		<li>Son los objetos que residen en el servidor.</li>
+		<li>Se envían a través de objetos proxy serializados.</li>
+</ul>
+<pre>
+public void onCargarListadoPlayas() {
+    SpotRequest sr = swrf.spotRequest();
+    sr.findAllSpots().with("location").fire(new Receiver<List<SpotProxy>>() {
+        public void onSuccess(List<SpotProxy> response) {
+            playasListView.addPlayas(response);
+        }
+        public void onFailure(ServerFailure error) {
+            System.out.println(error.getMessage());
+        }
+    });
+}
+</pre>
+</article>
+<article>
+  	<h3>
+    Componentes visuales
+  	</h3>
+<p>Separación de Funcionalidad:</p>
+<div style="margin-top: 70px;"><center><img src="images/componentes-visuales.png"/></center>
+	</div>
+</article>
+<article>
+  	<h3>
+    Componentes visuales
+  	</h3>
+<p>Estructura de un componente:</p>
+<pre>
+&lt;!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+&lt;ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+    xmlns:g="urn:import:com.google.gwt.user.client.ui">
+    &lt;ui:style>
+    &lt;/ui:style>
+    &lt;g:HTMLPanel>
+        &lt;h2>Listado de Playas:&lt;/h2>
+        &lt;g:FlowPanel ui:field="fpPlayas">&lt;/g:FlowPanel>
+    &lt;/g:HTMLPanel>
+&lt;/ui:UiBinder> 
+</pre>
+</article>
+<article>
+<h3>
+    Componentes visuales
+  	</h3>
+<p>Funcionalidad de un componente:</p>
+<pre>
+public class SesionListViewImpl extends Composite implements SesionListView {
+  private static SesionListImplUiBinder uiBinder = GWT.create(SesionListImplUiBinder.class);
+  interface SesionListImplUiBinder extends UiBinder<Widget, SesionListViewImpl> {}    
+  @UiField FlowPanel fpsesiones;
+</pre>
+</article>
+<article>
+  	<h3>
+    Internacionalización
+  	</h3>
+<p>Con esta arquitectura internacionalizar textos es muy simple:</p>
+<ol>
+		<li>Los textos se encapsulan con la etiqueta &lt;ui:msg&gt;.</li>
+<pre>
+&lt;ui:msg>Panel Principal del ejemplo&lt;/ui:msg>
+</pre>
+		<li>GWT crea un archivo properties con los textos del componente.</li>
+		<li>Hay que incluir el módulo de Internacionalización.</li>
+<pre>
+&lt;module>
+	&lt;inherits name='com.google.gwt.i18n.I18N'/>
+	&lt;extend-property name='locale' values='en_US, es'/>
+	&lt;set-property-fallback name='locale' value='es'/>
+&lt;/module>
+</pre>
+</ol>
+</article>

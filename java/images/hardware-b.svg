@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="23cm" height="6cm" viewBox="171 213 445 107" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #f1f1ff" x="172.9" y="250.1" width="442" height="68.9" rx="4" ry="4"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="172.9" y="250.1" width="442" height="68.9" rx="4" ry="4"/>
+  </g>
+  <g>
+    <rect style="fill: #fff4ba" x="204.9" y="267.1" width="195.6" height="36" rx="20" ry="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="204.9" y="267.1" width="195.6" height="36" rx="20" ry="20"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="302.7" y="289.9">
+      <tspan x="302.7" y="289.9">sincronizar módulo fotovoltáico</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="432.218" y="267.1" width="141.95" height="36" rx="20" ry="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="432.218" y="267.1" width="141.95" height="36" rx="20" ry="20"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.8;font-family:sanserif;font-style:normal;font-weight:normal" x="503.193" y="289.9">
+      <tspan x="503.193" y="289.9">indicar estado bateria</tspan>
+    </text>
+  </g>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="502.773" y1="214.499" x2="503.193" y2="267.1"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x1="302.918" y1="216.548" x2="302.7" y2="267.1"/>
+</svg>
