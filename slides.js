@@ -633,3 +633,9 @@ if (!window['_DEBUG'] && document.location.href.indexOf('?debug') !== -1) {
 } else {
   initialize();
 }
+
+// ibaca extension
+function setCurSlide(number) {
+	curSlide = number;  // update browser location
+	updateSlides(); // move slides & update hash
+}
