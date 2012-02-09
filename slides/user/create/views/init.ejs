@@ -1,0 +1,16 @@
+<fieldset>
+	<label for="radio">Tipo actividad</label>
+	<br>
+	<input type="radio" name="type" value="view" checked>Ver</input>
+	<input type="radio" name="type" value="present">Exponer</input>
+	<br>
+	<label for="session">Sesion</label>
+	<br>
+	<input type="text" name="session" id="session" value="inftel" class="text ui-widget-content ui-corner-all" />
+	<br>
+	<label for="nick">Apodo</label>
+	<br>
+	<input type="text" name="nick" id="nick" value="user-<%= new Date().getTime()%>" class="text ui-widget-content ui-corner-all" />
+	<br>
+	<input type='submit' value='Sincronizar'/>
+</fieldset>

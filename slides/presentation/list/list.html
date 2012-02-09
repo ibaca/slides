@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<title>Slides.Presentation.List Demo</title>
+        <style type='text/css'>
+            body {font-family: verdana}
+        </style>
+	</head>
+	<body>
+	    <h1>Slides.Presentation.List Demo</h1>
+		<ul id='presentations'></ul>
+		<a href='javascript://' id='create'>Create Presentation</a>
+		<script type='text/javascript' 
+                src='../../../steal/steal.js'>
+        </script>
+		<script type='text/javascript'>
+			steal('slides/presentation/list','slides/fixtures',function(){
+				
+				$('#presentations').slides_presentation_list();
+				
+				$('#create').click(function(){
+					new Slides.Models.Presentation({
+						name: "Grilled Cheese",
+						description: "Bread and Cheese"
+					}).save();
+				})
+			})
+		</script>
+	</body>
+</html>
