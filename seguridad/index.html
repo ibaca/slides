@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+
+<!--
+  Google HTML5 slide template
+
+  Authors: Luke Mahé (code)
+           Marcin Wichary (code and design)
+           
+           Dominic Mazzoni (browser compatibility)
+           Charles Chen (ChromeVox support)
+
+  URL: http://code.google.com/p/html5slides/
+-->
+
+<html>
+<head>
+<title>Presentation</title>
+<meta charset='utf-8'>
+<script src='../slides.js'></script>
+<style>
+.slides.template-inftel > article:not(.nobackground):not(.biglogo) {
+	background: url(images/inftel-logo.png) 560px 605px no-repeat;
+	background-color: white;
+}
+</style>
+</head>
+
+
+<body style='display: none'>
+<img style='display:none' src='images/inftel-logo.png'>
+<section class='slides layout-regular template-inftel'> 
+  
+  <!-- Your slides (<article>s) go here. Delete or comment out the
+           slides below. -->
+
+<article>
+<h1 style='margin-top: 105px'>
+Uso de certificados para autenticación de aplicaciones Android
+<br> 
+<span style="font-size: 50%">Seguridad Informática</span>
+</h1>
+<p>
+Ignacio Baca Moreno-Torres<br> 
+Fernando Jesús Fernández Carillo<br>
+Alberto Jimenez Ruiz <br> 
+Abril 2012
+</p>
+</article>
+
+<!-- Inicio de la presentacion -->
+
+<article class='fill'>
+    <h3> Introducción y planteamiento del problema </h3>
+    <p> <img src='images/jp12-sup-allround-03-indra.jpg'> </p>
+<!--     <div class='source'>Por: Manuel Valls Vorndran</div> -->
+</article>
+
+<article>
+<h3>Idea Inicial</h3>
+<p>Aplicación de localización de surfistas
+<ul style="margin-top:5px">
+<li>¿Donde esta la gente navegando?
+<li>Diario de sesiones
+</ul>
+<p>La aplicación debe tener los siguientes UI
+<ul style="margin-top:5px">
+<li>Interfaz móvil
+<li>Interfaz web
+<li>Interfaz escritorio
+</ul>
+</article>
+
+<article>
+<h3>Casos de uso usuario móvil</h3>
+<p><img src='images/cu-movil.png' class="centered" style="width:70%">
+</article>
+
+<article>
+<h3>Casos de uso usuario web</h3>
+<p><img src='images/cu-web.png' class="centered" style="width:70%">
+</article>
+
+<article>
+<h3>Casos de uso usuario escritorio</h3>
+<p><img src='images/cu-escritorio.png' class="centered" style="width:70%">
+</article>
+
+<article>
+<h3>Objetivos</h3>
+<ul>
+<li>Crear una interfaz comun
+<li>Máximo desacoplamiento entre clientes
+<li>Aplicación de metodologías de desarrollo
+</ul>
+</article>
+
+<article class='fill'>
+<h3> Arquitectura del Sistema </h3>
+<p> <img src='images/jp12-supersport-aa-01-indra.jpg'> </p>
+<!--     <div class='source'>Por: Manuel Valls Vorndran</div> -->
+</article>
+
+<article>
+<h3>Modulos del sistema</h3>
+<br>
+<p><img src='images/dia-sistema.png' class="centered" style="width:100%">
+</article>
+
+<article>
+<h3>Artefactos del sistema (maven)</h3>
+<br>
+<p><img src='images/dia-artefactos.png' class="centered" style="width:100%">
+</article>
+
+<article>
+<h3>Modelo de datos del sistema</h3>
+<br>
+<p><img src='images/dia-modelo.png' class="centered" style="width:100%">
+</article>
+
+<!-- --------------------------------------- SERVIDOR ------------------------------------------ -->
+
+<article class='fill'>
+<h3> Servidor <small>que debe hacer y como se ha implementado</small></h3>
+<p> <img src='images/jp12-twinserquad-jp-03-indra.jpg'> </p>
+<!--     <div class='source'>Por: Manuel Valls Vorndran</div> -->
+</article>
+
+<article>
+<h3>¿Que debe hacer el servidor?</h3>
+<ul>
+<li>Registrar el usuario y su posición
+<li>Obtener listas de playas, localizadas y activas (hotspot)
+<li>Generar evenews y notificarlos
+<li>Mantener un diarío de sesiones
+</ul>
+</article>
+
+<article>
+<h3>Modulos del servidor</h3>
+<br>
+<p><img src='images/dia-servidor-modulos.png' class="centered" style="width:100%">
+</article>
+
+<article class='nobackground'>
+<h3>Separación de responsabilidad <small>, fachada de sesion</small></h3>
+<p><img src='images/dia-secuencia-sesion.png' class="centered" style="width:100%">
+</article>
+
+<article class='nobackground'>
+<h3>Separación de responsabilidad <small>, capa de servicios</small></h3>
+<p><img src='images/dia-secuencia-servicios.png' class="centered" style="width:100%">
+</article>
+
+<article class='nobackground'>
+<h3>Separación de responsabilidad <small>, capa de persistencia</small></h3>
+<p><img src='images/dia-secuencia-persistencia.png' class="centered" style="width:100%">
+</article>
+
+<article>
+<h3>Modulos, paquetes y clases</h3>
+<ul>
+<li>Sesion y otras utilidades 
+<br><code>org.inftel.socialwind.server</code>
+<br>SocialWindRequestFactoryServlet, UserNotAuthenticatedException, Utils...
+<li>Servicios
+<br><code>org.inftel.socialwind.server.services</code>
+<br>SurferService, SessionsService, SpotService, EnvewsService...
+<li>Persistencia
+<br><code>org.inftel.socialwind.server.domain</code>
+<br>DomainContext, BaseEntity, Surfer, Spot, Session...
+</article>
+
+<article>
+<h3>Nunca reinventar la rueda<small>, usar herramientas disponibles</small></h3>
+<ul>
+<li>Uso de genericos
+<li>Uso de JSE, ThreadLocal
+<li>Uso de java, reimplementación anonima
+<li>Correcto tratamiento de excepciones
+</ul>
+<pre style='margin-top:0'>
+private static ThreadLocal&ltEntityManager&gt holder = 
+           new ThreadLocal&ltEntityManager&gt() {
+   @Override
+   protected EntityManager initialValue() {
+       throw new IllegalStateException(DomainContext.class.getName()
+               + " no esta inicializado");
+   }
+};
+</pre>
+<p style='margin-top:-36px'>
+<small><code>org.inftel.socialwind.server.domain.DomainContext</code></small>
+</article>
+
+<article>
+<h3>Desarrollo centrado en test</h3>
+<ul>
+<li>Primero, definición del API
+<li>Test validaban el api (integración)
+<li>Test validan las funcionalidad de cada modulo (unitario)
+<li>Se implementa el código
+</ul>
+<pre style='margin-top:0'>
+@Test(expected = UserNotAuthenticatedException.class)
+public final void testCurrentUserNotAuthenticated() {
+  helper.setEnvIsLoggedIn(false);
+  @SuppressWarnings("unused")
+  Surfer current = SurferService.currentSurfer();
+}
+</pre>
+<p style='margin-top:-36px'>
+<small><code>...socialwind.server.services.SurferServiceTest (main/test)</code></small>
+</article>
+
+  
+<!-- ----------------------------------- SWING CLIENT ------------------------------------------ -->
+
+<article class='fill'>
+<h3> Cliente de Escritorio <small>java SE y Swing</small></h3>
+<p> <img src='images/jp12-freestyle-yp-01-indra.jpg'> </p>
+<!--     <div class='source'>Por: Manuel Valls Vorndran</div> -->
+</article>
+
+<article>
+<h3>¿Que hace?</h3>
+<ul>
+<li>Guardar y obtener propiedades de usuario
+<li>Autenticarse en google
+<li>Autorizar el uso del servidor*
+<li>Modificar datos de usuario<br>en el servidor
+<li>Recibir notificaciones del<br> servidor
+</ul>
+<img src='images/swing-ui.png' class="centered" style='margin-top:-200px;'>
+</article>
+
+<article class='nobackground'>
+<h3>Arquitectura de la aplicación Swing</h3>
+<p>
+<img src='images/dia-swing-arquitectura.png' class="centered" style='width:85%'>
+</article>
+
+<article>
+<h3>Persistencia, local y remota</h3>
+<ul>
+<li>Persistencia local
+<br><code>java.util.prefs.Preferences</code>
+<pre style='margin-top:10px;margin-bottom:10px'>
+Preferences preferences = Preferences.userNodeForPackage(ApplicationWindow.class);
+userName = preferences.get("user_name", "");
+password = preferences.get("password", "");
+savePassword = preferences.getBoolean("save_password", false);
+</pre>
+<li>Persistencia remota
+<br>A través del API SocialWind
+<pre style='margin-top:10px;margin-bottom:10px'>
+SurferRequest request = requestFactory.surferRequest();
+surfer = request.edit(surfer);
+surfer.setDisplayName(getDisplayName());
+surfer.setFullName(getFullName());
+request.fire(new Receiver...
+</pre>
+</ul>
+</article>
+
+<article>
+<h3>Sincronización de evenews</h3>
+<p>Dos threads, uno para comunicación y otro para mostrar
+<p><img src='images/dia-evenews.png' class="centered" style='width:60%'>
+<p><pre>
+// Blocking queue para esperar recibir mensajes
+private final BlockingQueue&ltString[]&gt queue = new ArrayBlockingQueue&ltString[]&gt(10);
+// offer, por si hay demasiados que se descarten
+queue.offer(new String[] { title, message });
+// take para que quede bloqueado hasta que reciba algo
+String[] data = queue.take();
+</pre>
+</article>
+
+<!-- -------------------------------------- CLIENTES ------------------------------------------- -->
+
+
+
+<!-- --------------------------------- parte de rolimat----------------------------------------- -->
+
+
+		<article class='fill'>
+  <h3>Cliente móvil</h3>
+  <p>
+    <img src='images/jp12-twinserquad-jp-07-indra.jpg'>
+  </p>
+  <div class='source'>Por: Alberto Mateos Checa</div>
+</article>
+
+<article>
+  	<h3>
+    Estructura de paquetes
+  	</h3>
+  
+    <ul>
+		<li>Tendencia: ordenar las clases por pantallas o según donde se usen en la aplicación</li> 
+		<li>Consecuencia: código no reusable</li>
+		<div class="build"><li><b>Solución:</b> agrupar las clases según su funcionalidad</li></div>
+	</ul>
+
+<div class="build">
+	<center><img src="images/paquetesAndroid.png"/></center>
+	</div>
+</article>
+
+<article>
+  	<h3>
+  	MVC: Android vs JRE
+  	</h3>
+    <ul>
+		<li>No existe método Main</li> 
+		<li>No está implementado el patrón Observer</li>
+		<li>Definición de los elementos de la UI mediante XML</li>
+	</ul>
+</article>
+
+<article>
+  	<h3>
+  	MVC: Modelo
+  	</h3>
+	<p>Uso de 3 modelos: hotspots, sesiones y perfil.</p><br> 
+	<b>Hotspots</b>
+		<ul>
+			<li>ArrayList&lt;Spot&gt; (nombre, descripción, número de surfers actuales y totales, longitud, latitud, url de imagen)</li>
+		</ul>
+	<b>Sesiones</b>
+		<ul><li>ArrayList&lt;Session&gt; (spot, fecha inicio, fecha fin)</li></ul>	
+	<b>Perfil</b>
+		<ul>
+			<li>DisplayName, FullName, GravatarHash</li>
+		</ul>
+</article>
+
+<article>
+	<h3>MVC: Modelo</h3>
+	<center><img src="images/flujoModelos.svg" width="750" height="500"></center>
+</article>
+
+<article>
+  	<h3>
+  	MVC: Modelo
+  	</h3>
+	<h5>Características</h5> 
+	<ul>
+		<li>Serializable: permite almacenar el estado en caso de cerrar la aplicación y es necesario para el paso de modelos entre pantallas</li>
+		<li>Acceso sincronizado a los datos<br>
+			<pre>
+public String getDisplayName() {
+    synchronized (this) {
+        return displayName;
+    }
+}
+			</pre>
+		</li>
+	</ul>
+</article>
+
+<article>
+	<h3>MVC: Modelo</h3>
+	<ul>
+		<li>Notificación a la Vista de cambios en el modelo a través de listener implementado como inner interface<br>
+			<pre>
+public interface HotspotListener {
+	void onHotspotsUpdated(HotspotModel hotspotModel);
+}
+			</pre>
+		</li>
+		<li>El modelo contiene un array de listeners de notificación a la vista</li>
+	</ul>
+</article>
+
+<article>
+	<h3>MVC: Modelo</h3>
+	<ul>
+		<li>Cada cambio en el modelo se notifica mediante las funciones que se definen en la inner interfaz<br>
+				<pre>
+public void setHotspots(ArrayList&lt;Spot&gt; hotspots) {
+    synchronized (this) {
+        this.hotspots = hotspots;
+    }
+    // Se notifica a los listeners del cambio producido en el modelo
+    synchronized (listeners) {
+        for (HotspotListener listener : listeners) {
+            listener.onHotspotsUpdated(this);
+        }
+    }
+}
+				</pre>
+		</li>
+	</ul>	
+</article>
+
+<article>
+	<h3>MVC: Controlador</h3>
+	<ul>
+		<li>Contienen un objeto modelo como dato miembro</li>
+		<li>Definen funciones para recuperar datos del modelo o actualizarlo</li>
+	</ul>
+</article>
+
+<article>
+	<h3>MVC: Vista</h3>
+	<ul>
+		<li>Contienen como datos miembro un modelo y un controlador</li>
+		<li>Implementan la interfaz listener del modelo<br>
+			<pre>
+public void onHotspotsUpdated(HotspotModel hotspotModel) {
+    adapter.updateList(hotspotModel.getHotspots());
+    adapter.notifyDataSetChanged();
+
+}
+			</pre>
+		</li>
+	</ul>
+</article>
+
+<article>
+	<h3>MVC: Vista</h3>
+	<ul>
+		<li>Son registradas como listener en el modelo<br>
+			<pre>
+public void setModel(HotspotModel model) {
+
+    if (model == null) {
+        throw new NullPointerException("HotspotModel");
+    }
+
+    HotspotModel oldModel = this.hotspots;
+    if (oldModel != null) {
+        oldModel.removeListener(this);
+    }
+    this.hotspots = model;
+    this.hotspots.addListener(this);
+    this.controller = new HotspotController(this.hotspots);
+}
+			</pre>
+		</li>
+	</ul>
+</article>
+
+<article>
+	<h3>MVC: Vista</h3>
+	<br>
+	<center>
+		<img src="images/hotspotsActivity.png" width="250"/>
+		<img src="images/sesionesActivity.png" width="250"/>
+		<img src="images/perfilActivity.png" width="250"/>
+	</center>	
+</article>
+
+<article>
+	<h3>Patrones utilizados</h3>
+	<ul>
+		<li>Observer: MVC</li>
+		<li>Proxy: obtención de datos del servidor</li>
+		<li>Adapter: mostrado de datos en pantallas con lista (hotspots y sesiones)<br>
+			<pre>
+adapter = new HotspotArrayAdapter(activity, controller.getHotspots());
+setListAdapter(adapter);
+			</pre>
+		</li>
+	</ul>
+</article>
+
+<article>
+	<h3>Tareas asíncronas</h3>
+	<p>Objetivo: no congelar la UI</p>
+	<p>Uso de la clase AsyncTask</p>
+	<ul>
+		<li>Obtención y actualización de datos en el servidor</li>
+		<li>Descarga de la imagen de perfil desde Gravatar</li>
+	</ul>
+</article>
+  
+  
+  
+  
+<!-- --------------------------------- CLIENTE WEB --------------------------------------------- -->
+<!-- --------------------------------- CLIENTE WEB --------------------------------------------- -->
+<!-- --------------------------------- CLIENTE WEB --------------------------------------------- -->
+<!-- --------------------------------- CLIENTE WEB --------------------------------------------- -->
+<!-- --------------------------------- CLIENTE WEB --------------------------------------------- -->
+<!-- --------------------------------- CLIENTE WEB --------------------------------------------- -->
+<!-- --------------------------------- CLIENTE WEB --------------------------------------------- -->
+<!-- --------------------------------- CLIENTE WEB --------------------------------------------- -->
+  
+<article class='fill'>
+<h3> Client Web <small>google web toolkit</small></h3>
+<p> <img src='images/jp12-supersport-aa-mb-01-indra.jpg'> </p>
+<!--     <div class='source'>Por: Manuel Valls Vorndran</div> -->
+</article>  
+  
+<article>
+  	<h3>
+    Requisitos del Cliente Web
+  	</h3>
+  
+<div style="margin-top: 40px;"><center><img src="images/casos-uso-web.png"/></center>
+</div>	
+</article>
+<article>
+  	<h3>
+    Objetivos del Cliente Web
+  	</h3>
+  
+    <ul>
+		<li>Facilidad para añadir nueva funcionalidad.</li> 
+		<li>Facilidad para probar el modelo.</li>
+		<li>Facilidad de su mantenimiento.</li>		
+	</ul>
+<div class="build"><b>Necesidad de una buena arquitectura:</b> 
+<div style="margin-top: 30px;"><center><img src="images/paquetes-web.png"/></center>
+	</div>
+</div>	
+</article>
+<article>
+  	<h3>
+    Arquitectura del Cliente Web
+  	</h3>
+  
+<div><center><img src="images/arquitectura-web.png"/></center>
+	</div>
+</article>
+<article class='nobackground'>
+  	<h3>
+    Patrón Factory
+  	</h3>
+<p>Guarda Instancias estáticas de objetos pesados:</p>
+<ul style='margin-top:0'>
+		<li>Comunicación con el servidor.</li> 
+		<li>Bus de eventos.</li>
+		<li>Vistas.</li>		
+	</ul>
+<pre>
+public class ClientFactoryImpl implements ClientFactory {
+    /** Bus encargado de gestionar los distintos eventos de la aplicacion */
+    private static EventBus eventBus;
+    /** Vista encargada de mostrar el listados de playas */
+    private static PlayasListView playasListView;
+    /** Vista encargada de mostrar el perfil */
+    private static PerfilView perfilView;    
+    /** Objeto necesario para realizar la comunicacion con el servidor */
+    private static SocialwindRequestFactory swrf;    
+    /** Objeto necesario para realizar los cambios de actividad */
+    private static PlaceController placeController;
+</pre>
+</article>
+<article>
+  	<h3>
+    Patrón Activity/Place
+  	</h3>
+<p>Se encarga de realizar el cambio entre actividades. Una actividad es un componente MVP.</p>  
+<div class="build">
+<pre>
+@UiHandler("opIntro")
+void showPanelIntroduccion(ClickEvent event) {
+  clientFactory.getPlaceController().goTo(new IntroduccionPlace());
+}
+</pre>
+	</div>
+<div class="build">
+<pre>
+public Activity getActivity(Place place) {
+  if (place instanceof PlayasListPlace)
+    return new PlayasListActivity((PlayasListPlace) place, clientFactory, false);
+  else if (place instanceof PerfilPlace)
+    return new PerfilActivity((PerfilPlace) place, clientFactory);
+           .....
+}
+</pre>
+	</div>
+</article>
+<article>
+  	<h3>
+    Patrón Model-View-Presenter
+  	</h3>
+<p>Lleva a cabo la separación de responsabilidades.</p>  
+<div style="margin-top: 10px;"><strong>La parte Presenter:</strong></div>
+<ul style='margin-top:0'>
+		<li>Se encarga de la lógica de negocio.</li>
+		<li>Se comunica con  el servidor para traer Proxys del modelo.</li> 
+		<li>Se comunica con la parte View para que pinte los componentes.</li>		
+	</ul>
+<div style="margin-top: 30px;"><strong>La parte View:</strong></div>
+<ul>
+		<li>Recibe ordenes del Presenter para pintar componentes gráficos.</li>
+		<li>Sólo se crea la primera vez.</li>
+</ul>
+</article>
+<article>
+  	<h3>
+    Patrón Model-View-Presenter
+  	</h3>
+<div style="margin-top: 10px;"><strong>La parte Model:</strong></div>
+<ul>
+		<li>Son los objetos que residen en el servidor.</li>
+		<li>Se envían a través de objetos proxy serializados.</li>
+</ul>
+<pre>
+public void onCargarListadoPlayas() {
+    SpotRequest sr = swrf.spotRequest();
+    sr.findAllSpots().with("location").fire(new Receiver<List<SpotProxy>>() {
+        public void onSuccess(List<SpotProxy> response) {
+            playasListView.addPlayas(response);
+        }
+        public void onFailure(ServerFailure error) {
+            System.out.println(error.getMessage());
+        }
+    });
+}
+</pre>
+</article>
+<article>
+  	<h3>
+    Componentes visuales
+  	</h3>
+<p>Separación de Funcionalidad:</p>
+<div style="margin-top: 70px;"><center><img src="images/componentes-visuales.png"/></center>
+	</div>
+</article>
+<article>
+  	<h3>
+    Componentes visuales
+  	</h3>
+<p>Estructura de un componente:</p>
+<pre>
+&lt;!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+&lt;ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+    xmlns:g="urn:import:com.google.gwt.user.client.ui">
+    &lt;ui:style>
+    &lt;/ui:style>
+    &lt;g:HTMLPanel>
+        &lt;h2>Listado de Playas:&lt;/h2>
+        &lt;g:FlowPanel ui:field="fpPlayas">&lt;/g:FlowPanel>
+    &lt;/g:HTMLPanel>
+&lt;/ui:UiBinder> 
+</pre>
+</article>
+<article>
+<h3>
+    Componentes visuales
+  	</h3>
+<p>Funcionalidad de un componente:</p>
+<pre>
+public class SesionListViewImpl extends Composite implements SesionListView {
+  private static SesionListImplUiBinder uiBinder = GWT.create(SesionListImplUiBinder.class);
+  interface SesionListImplUiBinder extends UiBinder<Widget, SesionListViewImpl> {}    
+  @UiField FlowPanel fpsesiones;
+</pre>
+</article>
+<article class='nobackground'>
+  	<h3>
+    Internacionalización
+  	</h3>
+<p>Con esta arquitectura internacionalizar textos es muy simple:</p>
+<ol>
+		<li>Los textos se encapsulan con la etiqueta &lt;ui:msg&gt;.</li>
+<pre style='margin:0'>
+&lt;ui:msg>Panel Principal del ejemplo&lt;/ui:msg>
+</pre>
+		<li>GWT crea un archivo properties con los textos del componente.</li>
+		<li>Hay que incluir el módulo de Internacionalización.</li>
+<pre style='margin:0'>
+&lt;module>
+	&lt;inherits name='com.google.gwt.i18n.I18N'/>
+	&lt;extend-property name='locale' values='en_US, es'/>
+	&lt;set-property-fallback name='locale' value='es'/>
+&lt;/module>
+</pre>
+</ol>
+</article>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+<!-- --------------------------------- parte de antigua ---------------------------------------- -->
+
+  <article>
+    <h3> Dudas </h3>
+    <p style='margin-top:0'> <img style='width: 600px' src='images/dudas.jpg' class="centered"> </p>
+  </article>
+  <article class='fill'>
+    <h3> Gracias! </h3>
+    <p> <img src='images/jp12-sup-lady-02-indra.jpg'> </p>
+  </article>
+</section>
+</body>
+</html>
