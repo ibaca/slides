@@ -207,9 +207,10 @@ HttpClient client = new DefaultHttpClient(new ThreadSafeClientConnManager(
 <ul>
 <li>Posteriormente se puede utilizar HttpClient para acceder al server de forma segura.</li>
 </ul>
+ <p align="center"> <img src='images/PantallaPrincipal.png'> </p>
 </article>
 
-<!-- Parte Jesus: Interfaz Android -->
+<!-- Parte Fernando: Interfaz Android -->
 
 <article class='fill'>
     <h3> Interfaz Android </h3>
@@ -217,9 +218,44 @@ HttpClient client = new DefaultHttpClient(new ThreadSafeClientConnManager(
     <div class='source'>Por: Fernando Jesús Fernández Carillo</div>
 </article>
 
-<article>
-blablabla
+<article >
+    <h3> Interfaz Android </h3>
+    <p align="center"> <img src='images/funcionamiento.png'> </p>
 </article>
+
+<article  class='nobackground'>
+    <h3> Utilizacion del QR </h3>
+	<ul>
+	<li> Se utiliza para acceder a la URL donde se encuentra el certificado.</li>
+	<li> Se utiliza una aplicacion externa para leerlos.</li>
+    <pre style='margin-top:0; font-size: 14px;'>
+public void llamadaQR() {
+   Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+   intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+   startActivityForResult(intent, 0);
+}
+</pre>
+    <pre style='margin-top:0; font-size: 14px;' >
+public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (requestCode == 0 && resultCode == RESULT_OK) {
+                String contents = intent.getStringExtra("SCAN_RESULT");
+                try {
+                    downloadCert(contents);
+                } catch (Exception e) {}
+        }
+    }
+</pre>
+</article>
+
+<article >
+    <h3> Revocacion de Certificados </h3>
+	<ul>
+	<li> Se muestran todos los certificados validos del usuario registrado.</li>
+	<li> Una vez revocado, se le da la opcion al usuario de eliminar el archivo del movil.</li>
+	<li> No es necesario que el usuario tenga todos los certificados para revocarlos.</li>
+    <p align="center"><img src='images/revocarcertificado.png'></p>
+</article>
+
 
 <!-- ------------------------------------------------------------------------ -->
 
