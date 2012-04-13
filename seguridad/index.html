@@ -172,25 +172,52 @@ Abril 2012
 </article>
 
 <article>
-<h3>Nunca reinventar la rueda<small>, usar herramientas disponibles</small></h3>
+<h3>Comunicación Android-Server mediante SSL</h3>
 <ul>
-<li>Uso de genericos
-<li>Uso de JSE, ThreadLocal
-<li>Uso de java, reimplementación anonima
-<li>Correcto tratamiento de excepciones
+<li>Usando keytool, crear un KeyStore que contiene el certificado de la CA.<br/> Este se almacena en res/raw (directorio Android para ficheros binarios).</li>
 </ul>
 <pre style='margin-top:0'>
-private static ThreadLocal&ltEntityManager&gt holder = 
-           new ThreadLocal&ltEntityManager&gt() {
-   @Override
-   protected EntityManager initialValue() {
-       throw new IllegalStateException(DomainContext.class.getName()
-               + " no esta inicializado");
-   }
-};
+    keytool -import -alias "rootCert" -file AndroidAuthCA.cer 
+    -keystore truststore -storetype BKS 
+    -provider org.bouncycastle.jce.provider.BouncyCastleProvider 
+    -providerpath ./bcprov-jdk16-145.jar 
 </pre>
-<p style='margin-top:-36px'>
-<small><code>org.inftel.socialwind.server.domain.DomainContext</code></small>
+<p align="center"><img src='images/certificadoCA.png'></p>
+</article>
+
+<article>
+<h3>Comunicación Android-Server mediante SSL</h3>
+<ul>
+<li>Crear un segundo KeyStore al que se le añade el certificado de cliente seleccionado por el usuario.<br/> Este KeyStore sólo existe en la memoria privada de la aplicación.</li>
+</ul>
+<br/>
+<p><img style="float: left; padding-left: 40px;" src='images/QR.png'><img style="float: right; padding-top: 50px;" src='images/Ruta certificado.png'></p>
+</article>
+
+<article>
+<h3>Comunicación Android-Server mediante SSL</h3>
+<ul>
+<li>Crear un SocketFactory de tipo SSL, y añadir los certificados de la CA y del cliente.</li>
+<li>Asociar el esquema https al SocketFactory.</li>
+<li>Configurar HttpClient con el esquema.</li>
+</ul>
+<br/>
+<pre style='margin-top:0; font-size: 18px;'>
+SSLSocketFactory sslf = new SSLSocketFactory(clientCert, null, trusted);
+
+SchemeRegistry schemeRegistry = new SchemeRegistry();
+schemeRegistry.register(new Scheme("https", sslf, 443));
+
+HttpClient client = new DefaultHttpClient(new ThreadSafeClientConnManager(
+  request.getParams(), schemeRegistry), request.getParams());
+</pre>
+</article>
+
+<article>
+<h3>Comunicación Android-Server mediante SSL</h3>
+<ul>
+<li>Posteriormente se puede utilizar HttpClient para acceder al server de forma segura.</li>
+</ul>
 </article>
 
 <article>
